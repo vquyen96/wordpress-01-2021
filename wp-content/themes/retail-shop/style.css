@@ -193,6 +193,7 @@ Tags: e-commerce, blog, theme-options, full-width-template, one-column, two-colu
 }
 
 .header-content {
+	position: relative;
 	max-width: 1200px;
 	margin: auto;
 	/*margin: 0 30px;*/
@@ -266,3 +267,109 @@ form.top-search button[type=submit] {
 .cart-contents-count span {
 	top: 25px;
 }
+
+.header-home a {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 50%;
+	height: 80%;
+	display: block;
+}
+
+nav {
+	background: #ff9124;
+	height: 50px;
+}
+
+nav ul {
+	padding: 0;
+	margin: 0;
+}
+
+nav li {
+	list-style: none;
+}
+
+nav a {
+	text-decoration: none;
+	color: #fff;
+	height: 50px;
+	display: block;
+	line-height: 50px;
+	white-space: nowrap;
+	padding: 0 10px;
+	text-transform: uppercase;
+	font-weight: 500;
+}
+
+nav>ul>li>a:hover {
+	background: #fff;
+	color: #ff9124;
+}
+
+nav>ul>li>ul>li>a:hover {
+	background: #ff7524;
+}
+
+
+nav>ul {
+	display: flex;
+	max-width: 1200px;
+	margin: auto;
+}
+
+nav>ul>li {
+	position: relative;
+}
+
+nav>ul>li:hover>ul {
+	display: block;
+}
+
+nav>ul>li>ul {
+	background: #ff9124;
+	z-index: 2399999;
+	position: absolute;
+	top: 50px;
+	left: 0;
+	display: none;
+	min-width: 100%;
+}
+
+.banner-header.owl-carousel {
+	position: relative;
+}
+
+button.owl-prev {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100px;
+	margin: 0 !important;
+	font-size: 30px !important;
+	outline: none;
+}
+
+button.owl-next {
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 100%;
+	width: 100px;
+	margin: 0 !important;
+	font-size: 30px !important;
+	outline: none;
+}
+
+button.owl-prev:hover {
+	color: #999 !important;
+	background: linear-gradient(to right, #999 , #fff0) !important;
+}
+
+button.owl-next:hover {
+	color: #999 !important;
+	background: linear-gradient(to left, #999 , #fff0) !important;
+}
+

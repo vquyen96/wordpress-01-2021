@@ -15,7 +15,8 @@
 			<div><?php
 			$retail_shop_instance = array(
 				'category_id' => $retail_shop_option['slider_nav_cat'],
-			);			
+			);
+			print_r($retail_shop_instance) ;
 			the_widget('ecommerce_star_product_carousal_widget', $retail_shop_instance); 
 			?></div>
 		</div>

@@ -5642,7 +5642,7 @@ a.category-menu::before {
 	display: block;
 	padding: 0.5em 0.3em;
 	text-decoration: none;
-	letter-spacing: ;
+	letter-spacing: 0 ;
 	line-height: 140%;
 	font-size: 17px;
 	font-weight: 100;

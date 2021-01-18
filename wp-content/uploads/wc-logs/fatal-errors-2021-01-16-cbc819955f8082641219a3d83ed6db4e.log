@@ -1,0 +1,41 @@
+2021-01-16T09:23:26+00:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function esc_url(), 0 passed in /var/www/html/wp-content/themes/retail-shop/header.php on line 7 and at least 1 expected in /var/www/html/wp-includes/formatting.php:4307
+Stack trace:
+#0 /var/www/html/wp-content/themes/retail-shop/header.php(7): esc_url()
+#1 /var/www/html/wp-includes/template.php(730): require_once('/var/www/html/w...')
+#2 /var/www/html/wp-includes/template.php(676): load_template('/var/www/html/w...', true, Array)
+#3 /var/www/html/wp-includes/general-template.php(48): locate_template(Array, true, true, Array)
+#4 /var/www/html/wp-content/themes/ecommerce-star/index.php(16): get_header()
+#5 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#6 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#7 /var/www/html/index.php(17): require('/var/www/html/w...')
+#8 {main}
+  thrown in /var/www/html/wp-includes/formatting.php on line 4307
+
+2021-01-16T09:23:29+00:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function esc_url(), 0 passed in /var/www/html/wp-content/themes/retail-shop/header.php on line 7 and at least 1 expected in /var/www/html/wp-includes/formatting.php:4307
+Stack trace:
+#0 /var/www/html/wp-content/themes/retail-shop/header.php(7): esc_url()
+#1 /var/www/html/wp-includes/template.php(730): require_once('/var/www/html/w...')
+#2 /var/www/html/wp-includes/template.php(676): load_template('/var/www/html/w...', true, Array)
+#3 /var/www/html/wp-includes/general-template.php(48): locate_template(Array, true, true, Array)
+#4 /var/www/html/wp-content/themes/ecommerce-star/index.php(16): get_header()
+#5 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#6 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#7 /var/www/html/index.php(17): require('/var/www/html/w...')
+#8 {main}
+  thrown in /var/www/html/wp-includes/formatting.php on line 4307
+
+2021-01-16T09:24:18+00:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function esc_url(), 0 passed in /var/www/html/wp-content/themes/retail-shop/header.php on line 7 and at least 1 expected in /var/www/html/wp-includes/formatting.php:4307
+Stack trace:
+#0 /var/www/html/wp-content/themes/retail-shop/header.php(7): esc_url()
+#1 /var/www/html/wp-includes/template.php(730): require_once('/var/www/html/w...')
+#2 /var/www/html/wp-includes/template.php(676): load_template('/var/www/html/w...', true, Array)
+#3 /var/www/html/wp-includes/general-template.php(48): locate_template(Array, true, true, Array)
+#4 /var/www/html/wp-content/themes/ecommerce-star/index.php(16): get_header()
+#5 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#6 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#7 /var/www/html/index.php(17): require('/var/www/html/w...')
+#8 {main}
+  thrown in /var/www/html/wp-includes/formatting.php on line 4307
+
+2021-01-16T10:12:39+00:00 CRITICAL syntax error, unexpected ')' in /var/www/html/wp-content/themes/retail-shop/header.php on line 100
+
