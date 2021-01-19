@@ -1,34 +1,5 @@
 <?php get_header(); ?>
-<div class="container">
-    <div class="row">
-        <div class="col-12">
-            <div class="focal">
-                <div class="focal-title">
-                    Tin tiêu điểm
-                </div>
-                <div class="focal-content">
-                    <ul>
-                        <li>
-                            <a href="#">Sản phẩm PM Procare</a>
-                        </li>
-                        <li>
-                            <a href="#">Sản phẩm PM Procare diamond</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
-<div class="banner-header owl-carousel owl-theme">
-    <div class="item">
-        <img src="https://dinhduongbabau.net/wp-content/uploads/2020/06/banner-procare-diamond.jpg" alt="">
-    </div>
-    <div class="item">
-        <img src="https://dinhduongbabau.net/wp-content/uploads/2019/11/canxi-cho-me.jpg" alt="">
-    </div>
-</div>
 <div class="container home-content">
     <div class="row">
         <div class="col-sm-8 home-content-left">
@@ -193,6 +164,123 @@
                     </div>
                 </div>
             </div>
+            <div class="home-cate">
+                <a href="#" class="home-cate-title">
+                    CHO MẸ TRƯỚC BẦU
+                </a>
+                <div class="home-cate-main">
+                    <div class="home-cate-big">
+                        <div class="home-cate-big-left">
+                            <a href="#" class="home-cate-big-img" style="background: url('https://dinhduongbabau.net/wp-content/uploads/2019/06/bo-sung-acid-folic-cho-ba-bau-240x180.jpg') no-repeat center /cover"></a>
+                        </div>
+                        <div class="home-cate-big-right">
+                            <a href="#" class="home-cate-big-title">
+                                Bổ sung Acid folic đúng cách cho phụ nữ chuẩn bị mang thai, mang thai Việt Nam
+                            </a>
+                            <div class="home-cate-big-summary">
+                                Mỗi vùng miền có nguồn thực phẩm và thói quen ăn uống đặc trưng khác nhau. Cơ thể chúng ta cùng khả
+                            </div>
+                        </div>
+                    </div>
+                    <div class="home-cate-small">
+                        <ul>
+                            <li>
+                                <a href="#" class="home-cate-small-title">
+                                    Chuẩn bị mang thai – Những điều cần biết!
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="home-cate-small-title">
+                                    Dấu hiệu mang thai tuần đầu, dấu hiệu mang thai sớm
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="home-cate-small-title">
+                                    Tổng hợp những dấu hiệu có thai chính xác nhất
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="home-cate">
+                <a href="#" class="home-cate-title">
+                    CHO MẸ TRƯỚC BẦU
+                </a>
+                <div class="home-cate-main">
+                    <div class="home-cate-big">
+                        <div class="home-cate-big-left">
+                            <a href="#" class="home-cate-big-img" style="background: url('https://dinhduongbabau.net/wp-content/uploads/2019/06/bo-sung-acid-folic-cho-ba-bau-240x180.jpg') no-repeat center /cover"></a>
+                        </div>
+                        <div class="home-cate-big-right">
+                            <a href="#" class="home-cate-big-title">
+                                Bổ sung Acid folic đúng cách cho phụ nữ chuẩn bị mang thai, mang thai Việt Nam
+                            </a>
+                            <div class="home-cate-big-summary">
+                                Mỗi vùng miền có nguồn thực phẩm và thói quen ăn uống đặc trưng khác nhau. Cơ thể chúng ta cùng khả
+                            </div>
+                        </div>
+                    </div>
+                    <div class="home-cate-small">
+                        <ul>
+                            <li>
+                                <a href="#" class="home-cate-small-title">
+                                    Chuẩn bị mang thai – Những điều cần biết!
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="home-cate-small-title">
+                                    Dấu hiệu mang thai tuần đầu, dấu hiệu mang thai sớm
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="home-cate-small-title">
+                                    Tổng hợp những dấu hiệu có thai chính xác nhất
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="home-cate">
+                <a href="#" class="home-cate-title">
+                    CHO MẸ TRƯỚC BẦU
+                </a>
+                <div class="home-cate-main">
+                    <div class="home-cate-big">
+                        <div class="home-cate-big-left">
+                            <a href="#" class="home-cate-big-img" style="background: url('https://dinhduongbabau.net/wp-content/uploads/2019/06/bo-sung-acid-folic-cho-ba-bau-240x180.jpg') no-repeat center /cover"></a>
+                        </div>
+                        <div class="home-cate-big-right">
+                            <a href="#" class="home-cate-big-title">
+                                Bổ sung Acid folic đúng cách cho phụ nữ chuẩn bị mang thai, mang thai Việt Nam
+                            </a>
+                            <div class="home-cate-big-summary">
+                                Mỗi vùng miền có nguồn thực phẩm và thói quen ăn uống đặc trưng khác nhau. Cơ thể chúng ta cùng khả
+                            </div>
+                        </div>
+                    </div>
+                    <div class="home-cate-small">
+                        <ul>
+                            <li>
+                                <a href="#" class="home-cate-small-title">
+                                    Chuẩn bị mang thai – Những điều cần biết!
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="home-cate-small-title">
+                                    Dấu hiệu mang thai tuần đầu, dấu hiệu mang thai sớm
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="home-cate-small-title">
+                                    Tổng hợp những dấu hiệu có thai chính xác nhất
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="col-sm-4">
             <div class="content-right">
@@ -222,45 +310,96 @@
                         HỎI ĐÁP – TƯ VẤN TRỰC TUYẾN
                     </div>
                     <div class="content-right-qa-main">
+                            <ul>
+                                <li>
+                                    <a href="#" class="content-right-qa-item">
+                                        E be nhe can hon so voi tuoi thai
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="content-right-qa-item">
+                                        Bà bầu khó thở, làm gì để giảm bớt?
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="content-right-qa-item">
+                                        Bí quyết nhận biết Omega 3 loại nào tốt nhất?
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="content-right-qa-item">
+                                        Thuốc procare cho bà bầu của nước nào?
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="content-right-qa-item">
+                                        Bà bầu khó thở, làm gì để giảm bớt?
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="content-right-qa-item">
+                                        Bí quyết nhận biết Omega 3 loại nào tốt nhất?
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="content-right-qa-item">
+                                        Thuốc procare cho bà bầu của nước nào?
+                                    </a>
+                                </li>
+                            </ul>
+                    </div>
+                    <a href="#" class="content-right-qa-seemore">Xem thêm</a>
+                </div>
+                <div class="content-right-news">
+                    <div class="content-right-news-title">
+                        BÀI VIẾT MỚI NHẤT
+                    </div>
+                    <div class="content-right-news-main">
                         <ul>
                             <li>
-                                <a href="#" class="content-right-qa-item">
-                                    E be nhe can hon so voi tuoi thai
+                                <a href="#" class="content-right-news-item">
+                                    Chế độ dinh dưỡng thế nào để phòng chống thiếu máu khi mang thai?
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="content-right-qa-item">
+                                <a href="#" class="content-right-news-item">
                                     Bà bầu khó thở, làm gì để giảm bớt?
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="content-right-qa-item">
+                                <a href="#" class="content-right-news-item">
                                     Bí quyết nhận biết Omega 3 loại nào tốt nhất?
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="content-right-qa-item">
+                                <a href="#" class="content-right-news-item">
                                     Thuốc procare cho bà bầu của nước nào?
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="content-right-qa-item">
+                                <a href="#" class="content-right-news-item">
                                     Bà bầu khó thở, làm gì để giảm bớt?
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="content-right-qa-item">
-                                    Bí quyết nhận biết Omega 3 loại nào tốt nhất?
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="content-right-qa-item">
-                                    Thuốc procare cho bà bầu của nước nào?
                                 </a>
                             </li>
                         </ul>
                     </div>
-                    <a href="#" class="content-right-qa-seemore">Xem thêm</a>
+                </div>
+                <div class="content-right-btn-qa">
+                    <a href="#" class="">Đặt câu hỏi cho chuyên gia</a>
+                </div>
+                <div class="content-right-vid">
+                    <div class="content-right-vid-title">
+                        Video clips
+                    </div>
+                    <div class="content-right-vid-main">
+                        <div CLASS="content-right-vid-item">
+                            <iframe src="https://www.youtube.com/embed/3SJ-9414U1o" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <div class="content-right-vid-item-name">
+                                <span class="dashicons dashicons-video-alt2"></span>
+                                Tự tin đảm bảo dinh dưỡng “ĐỦ-ĐÚNG” tốt nhất cho con khi mang thai
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

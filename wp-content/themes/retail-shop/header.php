@@ -41,6 +41,8 @@ $cats = get_categories($args);
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
 </head>
 <body <?php body_class(); ?>>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v9.0&appId=196414931235563&autoLogAppEvents=1" nonce="12bKG53Q"></script>
 
     <header class="custom-header">
         <div class="header-content">
@@ -122,3 +124,33 @@ $cats = get_categories($args);
             ?>
         </ul>
     </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="focal">
+                    <div class="focal-title">
+                        Tin tiêu điểm
+                    </div>
+                    <div class="focal-content">
+                        <ul>
+                            <li>
+                                <a href="#">Sản phẩm PM Procare</a>
+                            </li>
+                            <li>
+                                <a href="#">Sản phẩm PM Procare diamond</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="banner-header owl-carousel owl-theme">
+        <div class="item">
+            <img src="https://dinhduongbabau.net/wp-content/uploads/2020/06/banner-procare-diamond.jpg" alt="">
+        </div>
+        <div class="item">
+            <img src="https://dinhduongbabau.net/wp-content/uploads/2019/11/canxi-cho-me.jpg" alt="">
+        </div>
+    </div>
