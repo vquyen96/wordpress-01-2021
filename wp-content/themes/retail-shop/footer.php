@@ -5,6 +5,19 @@
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  * @package retail-shop
  */
+
+$args = array(
+    'taxonomy' => 'category',
+    'orderby' => 'date',
+    'order' => 'DESC',
+    'show_count' => 1,
+    'pad_counts' => 0,
+    'hierarchical' => 0,
+    'title_li' => '',
+    'hide_empty' => 1,
+);
+$cats = get_categories($args);
+
 global $retail_shop_option;	
 if ( class_exists( 'WP_Customize_Control' ) ) {
    $retail_shop_option = wp_parse_args(  get_option( 'ecommerce_star_option', array() ) , ecommerce_star_settings());  
@@ -23,53 +36,41 @@ if($retail_shop_option['after_shop'] !=''  && class_exists( 'WooCommerce' ) && i
 	get_template_part( 'sections/after', 'shop');  
 }
 ?>
-</div><!-- end of page class - site--> 
-<footer id="colophon" role="contentinfo" class="site-footer  <?php echo esc_attr( $retail_shop_class );?>" style="background-color:<?php echo esc_attr( $retail_shop_option['footer_section_background_color'] ); ?>;">
-  <div class="footer-section <?php echo esc_attr( $retail_shop_class );?>" >
-    <div class="container">
-	 <div class="row">
-		<?php
-			get_template_part( 'template-parts/footer/footer', 'widgets-'.$retail_shop_option['footer_section_widget_layout']  );
-		?>
-      <div class="col-md-12">
-        <center>
-          <ul id="footer-social" class="header-social-icon animate fadeInRight" >
-            <?php if($retail_shop_option['social_facebook_link']!=''){?>
-            <li><a href="<?php echo esc_url($retail_shop_option['social_facebook_link']); ?>" target="<?php if($retail_shop_option['social_open_new_tab']=='1'){echo '_blank';} ?>" class="facebook" data-toggle="tooltip" title="<?php esc_attr_e('Facebook','retail-shop'); ?>"><i class="fa fa-facebook"></i></a></li>
-            <?php } ?>
-            <?php if($retail_shop_option['social_twitter_link']!=''){?>
-            <li><a href="<?php echo esc_url($retail_shop_option['social_twitter_link']); ?>" target="<?php if($retail_shop_option['social_open_new_tab']=='1'){echo '_blank';} ?>" class="twitter" data-toggle="tooltip" title="<?php esc_attr_e('Twitter','retail-shop'); ?>"><i class="fa fa-twitter"></i></a></li>
-            <?php } ?>
-            <?php if($retail_shop_option['social_skype_link']!=''){?>
-            <li><a href="<?php echo esc_url($retail_shop_option['social_skype_link']); ?>" target="<?php if($retail_shop_option['social_open_new_tab']=='1'){echo '_blank';} ?>" class="skype" data-toggle="tooltip" title="<?php esc_attr_e('Skype','retail-shop'); ?>"><i class="fa fa-skype"></i></a></li>
-            <?php } ?>
-            <?php if($retail_shop_option['social_pinterest_link']!=''){?>
-            <li><a href="<?php echo esc_url($retail_shop_option['social_pinterest_link']); ?>" target="<?php if($retail_shop_option['social_open_new_tab']=='1'){echo '_blank';} ?>" class="pinterest" data-toggle="tooltip" title="<?php esc_attr_e('pinterest','retail-shop'); ?>"><i class="fa fa-pinterest"></i></a></li>
-            <?php } ?>
-            <?php if($retail_shop_option['social_instagram_link']!=''){?>
-            <li><a href="<?php echo esc_url($retail_shop_option['social_instagram_link']); ?>" target="<?php if($retail_shop_option['social_open_new_tab']=='1'){echo '_blank';} ?>" class="instagram" data-toggle="tooltip" title="<?php esc_attr_e('Instagram','retail-shop'); ?>"><i class="fa fa-instagram"></i></a></li>
-            <?php } ?>
-            <?php if($retail_shop_option['social_linkdin_link']!=''){?>
-            <li><a href="<?php echo esc_url($retail_shop_option['social_linkdin_link']); ?>" target="<?php if($retail_shop_option['social_open_new_tab']=='1'){echo '_blank';} ?>" class="linkedin" data-toggle="tooltip" title="<?php esc_attr_e('Linkedin','retail-shop'); ?>"><i class="fa fa-linkedin"></i></a></li>
-            <?php } ?>		
-            <?php if($retail_shop_option['social_youtube_link']!=''){?>
-            <li><a href="<?php echo esc_url($retail_shop_option['social_youtube_link']); ?>" target="<?php if($retail_shop_option['social_open_new_tab']=='1'){echo '_blank';} ?>" class="youtube" data-toggle="tooltip" title="<?php esc_attr_e('YouTube','retail-shop'); ?>"><i class="fa fa-youtube"></i></a></li>
-            <?php } ?>					
-          </ul>
-        </center>
-      </div>
-	  
-	  </div>
-    </div>
-    <!-- .container -->
-   </div>
-   
- 	<!-- bottom footer -->
 
-		<?php get_template_part( 'template-parts/footer/bottom', 'one-column' ); ?>
-	
-	<!-- end of bottom footer --> 
-  <a href="#" class="scroll-top" tabindex="0"><i class="fa fa-angle-up"></i></a>
+<footer class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="footer-main">
+                <?php
+                $content = "";
+                foreach ($cats as $cat) {
+                    if ($cat->category_parent == 0 && $cat != null) {
+                        $content .= "<div class='footer-item'><div class='footer-item-title'>$cat->name</div>";
+                        $hasCateChild = false;
+                        foreach ($cats as $catChild) {
+                            if ($catChild->category_parent == $cat->term_id) {
+                                if (!$hasCateChild) {
+                                    $content .= "<div class='footer-item-main'>";
+                                    $hasCateChild = true;
+                                }
+                                $content .= "<a href='" . esc_url( home_url( '/' )."?cat=".$catChild->term_id ) . "'>$catChild->name</a>";
+                            }
+                        }
+                        if ($hasCateChild) {
+                            $content .= "</div>";
+                        }
+                        $content .= "</div>";
+                    }
+
+                }
+                echo $content;
+                ?>
+                <div class="footer-item">
+                    <div class="fb-page" data-href="https://www.facebook.com/nhungcaunoibathu/" data-tabs="" data-width="" data-height="200px" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/nhungcaunoibathu/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/nhungcaunoibathu/">Những Câu Nói Bất Hủ</a></blockquote></div>
+                </div>
+            </div>
+        </div>
+    </div>
 </footer>
 <!-- #colophon -->
 <?php 

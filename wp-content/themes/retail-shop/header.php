@@ -41,6 +41,8 @@ $cats = get_categories($args);
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
 </head>
 <body <?php body_class(); ?>>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v9.0&appId=196414931235563&autoLogAppEvents=1" nonce="12bKG53Q"></script>
 
     <header class="custom-header">
         <div class="header-content">
@@ -93,7 +95,7 @@ $cats = get_categories($args);
             </div>
         </div>
     </header>
-    <nav>
+    <nav class="nav-menu">
         <ul>
             <?php
             $content = "";
@@ -122,78 +124,33 @@ $cats = get_categories($args);
             ?>
         </ul>
     </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="focal">
+                    <div class="focal-title">
+                        Tin tiêu điểm
+                    </div>
+                    <div class="focal-content">
+                        <ul>
+                            <li>
+                                <a href="#">Sản phẩm PM Procare</a>
+                            </li>
+                            <li>
+                                <a href="#">Sản phẩm PM Procare diamond</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="banner-header owl-carousel owl-theme">
         <div class="item">
-            <img src="https://dinhduongbabau.net/wp-content/uploads/2019/11/canxi-cho-me.jpg" alt="">
+            <img src="https://dinhduongbabau.net/wp-content/uploads/2020/06/banner-procare-diamond.jpg" alt="">
         </div>
         <div class="item">
             <img src="https://dinhduongbabau.net/wp-content/uploads/2019/11/canxi-cho-me.jpg" alt="">
         </div>
-        <div class="item">
-            <img src="https://dinhduongbabau.net/wp-content/uploads/2019/11/canxi-cho-me.jpg" alt="">
-        </div>
-        <div class="item">
-            <img src="https://dinhduongbabau.net/wp-content/uploads/2019/11/canxi-cho-me.jpg" alt="">
-        </div>
-        <div class="item">
-            <img src="https://dinhduongbabau.net/wp-content/uploads/2019/11/canxi-cho-me.jpg" alt="">
-        </div>
-        <div class="item">
-            <img src="https://dinhduongbabau.net/wp-content/uploads/2019/11/canxi-cho-me.jpg" alt="">
-        </div>
-        <div class="item">
-            <img src="https://dinhduongbabau.net/wp-content/uploads/2019/11/canxi-cho-me.jpg" alt="">
-        </div>
-
     </div>
-<?php
-	if ( function_exists( 'wp_body_open' ) ) {
-		wp_body_open();
-	} else { 
-		do_action( 'wp_body_open' ); 
-	}
-$retail_shop_option['header_style'] = ecommerce_star_header_class();
-
-?>
-<!-- The Search Modal Dialog -->
-<div id="myModal" class="modal" aria-hidden="true" tabindex="-1" role="dialog">
-  <!-- Modal content -->
-  <div class="modal-content"> <span id="search-close" class="close" tabindex="0">&times;</span> 
-  <br/><br/><?php get_search_form(); ?><br/>
-  </div>
-</div>
-<!-- end search model-->
-<div id="page" class="site">
-<?php 
-	if($retail_shop_option['box_layout']){
-		echo '<div class="wrap-box">';
-	}
-?>
-<a class="skip-link screen-reader-text" href="#primary" ><?php esc_html_e( 'Skip to content', 'retail-shop' ); ?></a>
-<header id="masthead" class="<?php echo esc_attr(ecommerce_star_header_class()); ?> site-header" role="banner" >
-	
-		<!--display menu bar full row when header options, woocommerce layout with search--> 
-		<?php 
-		if($retail_shop_option['header_woocommerce'] && class_exists( 'WooCommerce' )){
-			ecommerce_star_woocommerce_menu();
-		}
-		
-		if((is_front_page() || is_home()) && $retail_shop_option['slider_in_home_page'] ){
-			get_template_part( 'template-parts/slider', 'section' );	
-		}
-				
-		if ($retail_shop_option['enable_breadcrumb'] && $retail_shop_option['header_woocommerce']) {
-			get_template_part( 'template-parts/header/breadcrumb'); 
-		}
-		
-		
-		if($retail_shop_option['before_shop'] !='' && class_exists( 'WooCommerce' ) && is_shop()){
-			get_template_part( 'sections/before', 'shop'); 
-		}
-?>
-</header>		
-<?php
-if ((is_front_page() || is_home()) && (class_exists( 'WooCommerce' ) && $retail_shop_option['header_slider_nav'])) {
-					get_template_part( 'sections/product','section');
-} 
