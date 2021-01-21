@@ -178,6 +178,8 @@ if ( ! function_exists( 'ecommerce_star_time_link' ) ) :
 			$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
 		}
 
+        echo $time_string;
+
 		$time_string = sprintf(
 			$time_string,
 			get_the_date( DATE_W3C ),
@@ -187,13 +189,13 @@ if ( ! function_exists( 'ecommerce_star_time_link' ) ) :
 		);
 		
 		$args = array( 'time'=> array('class'=> array(),'datetime'=>array()));
-
+		echo $time_string;
 		// Wrap the time string in a link, and preface it with 'Posted on'.
 		return sprintf(
 			/* translators: %s: post date */
 			__( '<span class="screen-reader-text">%1$s</span> %2$s', 'ecommerce-star' ),
 			esc_html__('Posted on', 'ecommerce-star'),
-			'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . wp_kses($time_string, $args) . '</a>'
+			'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . wp_kses($time_string, $args) . '</a>    '
 		);
 	}
 endif;
@@ -509,10 +511,10 @@ function ecommerce_star_excerpt_more( $link ) {
 	}
 
 	$link = sprintf(
-		'<p class="link-more"><a href="%1$s" class="more-link">%2$s</a></p>',
+		'<a href="%1$s" class="search-item-readmore">%2$s</a>',
 		esc_url( get_permalink( get_the_ID() ) ),
 		/* translators: %s: Name of current post */
-		sprintf( __( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'ecommerce-star' ), esc_html(get_the_title( get_the_ID() )) )
+		sprintf( __( '[Read more...]<span class="screen-reader-text"> "%s"</span>', 'ecommerce-star' ), esc_html(get_the_title( get_the_ID() )) )
 	);
 	return ' &hellip; ' . $link;
 }

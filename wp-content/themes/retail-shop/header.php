@@ -49,14 +49,10 @@ $cats = get_categories($args);
             <div class="header-top">
                 <div class="header-top-search">
                     <form class="top-search" action="http://localhost:6060/" method="get">
-                        <select class="d-none" name="product_cat">
-                            <option value="0" selected>All Categories</option>
-                        </select>
 
                         <label class="screen-reader-text" for="woocommerce-product-search-field">Search for</label>
                         <input type="search" name="s" id="" value="" placeholder="Bạn tìm kiếm gì ...">
                         <button type="submit"><span class="fa icon fa-search"></span></button>
-                        <input type="hidden" name="post_type" value="product">
                     </form>
                 </div>
                 <div class="header-top-nav">
