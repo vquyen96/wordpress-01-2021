@@ -18,7 +18,9 @@ if ( ! is_active_sidebar( 'sidebar-woocommerce' ) ) {
 
 <div class="container background">
    <div class="row">
-       <div class="col-sm-8"></div>
+       <div class="col-sm-8">
+           <?php woocommerce_content(); ?>
+       </div>
        <div class="col-sm-4">
            <div class="content-right">
                <a href="#" class="home-banner-right">
