@@ -37,36 +37,38 @@ if($retail_shop_option['after_shop'] !=''  && class_exists( 'WooCommerce' ) && i
 }
 ?>
 
-<footer class="container">
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="footer-main">
-                <?php
-                $content = "";
-                foreach ($cats as $cat) {
-                    if ($cat->category_parent == 0 && $cat != null) {
-                        $content .= "<div class='footer-item'><div class='footer-item-title'>$cat->name</div>";
-                        $hasCateChild = false;
-                        foreach ($cats as $catChild) {
-                            if ($catChild->category_parent == $cat->term_id) {
-                                if (!$hasCateChild) {
-                                    $content .= "<div class='footer-item-main'>";
-                                    $hasCateChild = true;
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="footer-main">
+                    <?php
+                    $content = "";
+                    foreach ($cats as $cat) {
+                        if ($cat->category_parent == 0 && $cat != null) {
+                            $content .= "<div class='footer-item'><div class='footer-item-title'>$cat->name</div>";
+                            $hasCateChild = false;
+                            foreach ($cats as $catChild) {
+                                if ($catChild->category_parent == $cat->term_id) {
+                                    if (!$hasCateChild) {
+                                        $content .= "<div class='footer-item-main'>";
+                                        $hasCateChild = true;
+                                    }
+                                    $content .= "<a href='" . esc_url( home_url( '/' )."?cat=".$catChild->term_id ) . "'>$catChild->name</a>";
                                 }
-                                $content .= "<a href='" . esc_url( home_url( '/' )."?cat=".$catChild->term_id ) . "'>$catChild->name</a>";
                             }
-                        }
-                        if ($hasCateChild) {
+                            if ($hasCateChild) {
+                                $content .= "</div>";
+                            }
                             $content .= "</div>";
                         }
-                        $content .= "</div>";
-                    }
 
-                }
-                echo $content;
-                ?>
-                <div class="footer-item">
-                    <div class="fb-page" data-href="https://www.facebook.com/nhungcaunoibathu/" data-tabs="" data-width="" data-height="200px" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/nhungcaunoibathu/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/nhungcaunoibathu/">Những Câu Nói Bất Hủ</a></blockquote></div>
+                    }
+                    echo $content;
+                    ?>
+                    <div class="footer-item">
+                        <div class="fb-page" data-href="https://www.facebook.com/nhungcaunoibathu/" data-tabs="" data-width="" data-height="200px" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/nhungcaunoibathu/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/nhungcaunoibathu/">Những Câu Nói Bất Hủ</a></blockquote></div>
+                    </div>
                 </div>
             </div>
         </div>

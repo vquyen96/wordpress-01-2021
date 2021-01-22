@@ -46,24 +46,35 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
                 <h1 class="list-cate-left-title">
                     <?php echo $cate->name ?>
                 </h1>
-                <?php foreach ($list_post as $post) { ?>
+                <?php while ( have_posts() ) : the_post();?>
                 <div class="list-cate-item">
                     <div class="list-cate-item-img">
-                        <a href="#" class="list-cate-item-img-main"
-                           style="background: url('https://dinhduongbabau.net/wp-content/uploads/2020/12/khi-chuan-bi-dinh-duong-mang-thai-ban-dung-quen-ru-chong-cung-tham-gia-nhe-240x180.jpg') no-repeat center /cover"></a>
+                        <?php if( has_post_thumbnail() ) { ?>
+                            <div class="post-thumbnail" >
+                                <a href="<?php the_permalink(); ?>">
+                                    <?php the_post_thumbnail('full'); ?>
+                                </a>
+                            </div><!-- .post-thumbnail -->
+                        <?php } else { ?>
+                            <div class="post-thumbnail" style="background: #ccc">
+                                <a href="<?php the_permalink(); ?>">
+
+                                </a>
+                            </div><!-- .post-thumbnail -->
+                        <?php } ?>
                     </div>
 
                     <div class="list-cate-item-content">
-                        <a href="#" class="list-cate-item-title">
-                            Chế độ ăn uống ảnh hưởng thế nào tới khả năng sinh sản?
-                        </a>
+                        <?php
+                        the_title( sprintf( '<h2 class="entry-title list-cate-item-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' );
+                        ?>
                         <p class="list-cate-item-summary">
-                            Chắc hẳn bạn đã từng nghe rất nhiều lời khuyên về chế độ ăn uống,, bổ sung dưỡng chất khi chuẩn bị mang thai. Vậy cụ thể chế độ dinh dưỡng ảnh hưởng thế nào tới khả năng sinh sản? Cùng dinh dưỡng bà bầu tìm hiểu nhé! Các nhà nghiên cứu từ …
+                            <?php the_excerpt(); ?>
                         </p>
-                        <a href="#" class="list-cate-item-seemore">Xem chi tiết >></a>
+                        <a href="<?php the_permalink(); ?>" class="list-cate-item-seemore">Xem chi tiết >></a>
                     </div>
                 </div>
-                <?php } ?>
+                <?php endwhile; ?>
             </div>
         </div>
         <div class="col-sm-4">
