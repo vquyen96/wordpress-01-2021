@@ -13,14 +13,14 @@ Text Domain: hunmend-customs
 ### Polls Table Name
 global $wpdb;
 $wpdb->hunmend_customs   = $wpdb->prefix.'hunmend_customs';
-$wpdb->hunmend_contact   = $wpdb->prefix.'hunmend_contact';
+$wpdb->hunmend_banners   = $wpdb->prefix.'hunmend_banners';
 
 add_action( 'admin_menu', 'hunmend_menu' );
 function hunmend_menu() {
     add_menu_page( __( 'Hunmend Customs', 'hunmend-customs' ), __( 'Hunmend Setting', 'hunmend-customs' ), 'hunmend-customs', 'hunmend-customs/setting.php', '', 'dashicons-editor-alignleft' );
 
     add_submenu_page( 'hunmend-customs/setting.php', __( 'Setting', 'hunmend-customs'), __( 'Setting', 'hunmend-customs' ), 'hunmend-customs', 'hunmend-customs/setting.php' );
-    add_submenu_page( 'hunmend-customs/setting.php', __( 'Add Category', 'hunmend-customs'), __( 'Add Category', 'hunmend-customs' ), 'hunmend-customs', 'hunmend-customs/banner.php' );
+    add_submenu_page( 'hunmend-customs/setting.php', __( 'Banner', 'hunmend-customs'), __( 'Banner', 'hunmend-customs' ), 'hunmend-customs', 'hunmend-customs/banner.php' );
 }
 
 
@@ -70,7 +70,24 @@ function hunmend_activate()
         "PRIMARY KEY  (id)" .
         ") $charset_collate;";
 
+    $create_table['hunmend_banners'] = "CREATE TABLE $wpdb->hunmend_banners (" .
+        "id int(10) NOT NULL auto_increment," .
+        "title varchar(200) character set utf8 NOT NULL default ''," .
+        "value varchar(200) character set utf8 NOT NULL default ''," .
+        "links varchar(200) character set utf8 NOT NULL default ''," .
+        "sort int(10) NOT NULL default 1," .
+        "type int(10) NOT NULL default 1," .
+        "status tinyint(3) NOT NULL default 1," .
+        "created_at int(10) NOT NULL default '0'," .
+        "updated_at int(10) NOT NULL default '0'," .
+        "creator_id int(10) default NULL," .
+        "PRIMARY KEY  (id)" .
+        ") $charset_collate;";
+
+
+
     dbDelta($create_table['hunmend_customs']);
+    dbDelta($create_table['hunmend_banners']);
     // Check Whether It is Install Or Upgrade
     $first_hunmend = $wpdb->get_var("SELECT id FROM $wpdb->hunmend_customs LIMIT 1");
     // If Install, Insert 1st Poll Question With 5 Poll Answers
@@ -91,6 +108,12 @@ function hunmend_activate()
         $wpdb->insert($wpdb->hunmend_customs, array('name' => __('POST_TOP', 'hunmend-customs'), 'value' => __('4', 'hunmend-customs'), 'status' => 1), array('%s', '%s', '%d'));
         $wpdb->insert($wpdb->hunmend_customs, array('name' => __('POST_TOP', 'hunmend-customs'), 'value' => __('5', 'hunmend-customs'), 'status' => 1), array('%s', '%s', '%d'));
         $wpdb->insert($wpdb->hunmend_customs, array('name' => __('POST_TOP', 'hunmend-customs'), 'value' => __('6', 'hunmend-customs'), 'status' => 1), array('%s', '%s', '%d'));
+        $wpdb->insert($wpdb->hunmend_customs, array('name' => __('CATE_HOME', 'hunmend-customs'), 'value' => __('1', 'hunmend-customs'), 'status' => 1), array('%s', '%s', '%d'));
+        $wpdb->insert($wpdb->hunmend_customs, array('name' => __('CATE_HOME', 'hunmend-customs'), 'value' => __('2', 'hunmend-customs'), 'status' => 1), array('%s', '%s', '%d'));
+        $wpdb->insert($wpdb->hunmend_customs, array('name' => __('CATE_HOME', 'hunmend-customs'), 'value' => __('3', 'hunmend-customs'), 'status' => 1), array('%s', '%s', '%d'));
+        $wpdb->insert($wpdb->hunmend_customs, array('name' => __('CATE_HOME', 'hunmend-customs'), 'value' => __('4', 'hunmend-customs'), 'status' => 1), array('%s', '%s', '%d'));
+        $wpdb->insert($wpdb->hunmend_customs, array('name' => __('CATE_HOME', 'hunmend-customs'), 'value' => __('5', 'hunmend-customs'), 'status' => 1), array('%s', '%s', '%d'));
+        $wpdb->insert($wpdb->hunmend_customs, array('name' => __('CATE_HOME', 'hunmend-customs'), 'value' => __('6', 'hunmend-customs'), 'status' => 1), array('%s', '%s', '%d'));
 
 
         $permalink = $wpdb->get_row($wpdb->prepare("SELECT * FROM $wpdb->options WHERE option_name = 'permalink_structure'"));

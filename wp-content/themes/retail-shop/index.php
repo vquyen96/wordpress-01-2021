@@ -1,15 +1,39 @@
 <?php get_header();
 
+global $wpdb;
+
+$hunmendCustoms =  $wpdb->get_results(  $wpdb->prepare("SELECT * FROM $wpdb->hunmend_customs WHERE status = %d ORDER BY sort ASC", 1));
+$hunmendData = [];
+$listIsArray = ['NAV_HEADER', 'POST_TOP', 'FEATURE', 'CATE_HOME'];
+if (count($hunmendCustoms) != 0) {
+    foreach ($hunmendCustoms as $hunmend) {
+        if (in_array($hunmend->name, $listIsArray)) {
+            $hunmendData[$hunmend->name][] = $hunmend->value;
+        } else {
+            $hunmendData[$hunmend->name] = $hunmend->value;
+        }
+    }
+}
+
+
 $list_exclude = [];
 
 $args = [
-    'numberposts'      => 6,
+    'numberposts'      => 50,
     'orderby'          => 'post_date',
     'order'            => 'DESC',
     'post_type'        => 'post',
 ];
-$list_post_top = get_posts($args);
-//print_r(get_permalink($list_post_top[0]->ID));
+$list_post_new = get_posts($args);
+$list_post_top = [];
+foreach ($hunmendData['POST_TOP'] as $postIds) {
+    foreach ($list_post_new as $postItem) {
+        if ($postItem->ID == $postIds) {
+            $list_post_top[] = $postItem;
+        }
+    }
+}
+
 foreach ($list_post_top as $postItem) {
     $list_exclude[] = $postItem->ID;
 }
@@ -22,18 +46,25 @@ $args = array(
     'pad_counts' => 0,
     'hierarchical' => 0,
     'title_li' => '',
-    'number' => 6,
 );
 $cats = get_categories($args);
+$listCateHome = [];
+foreach ($hunmendData['CATE_HOME'] as $cateId) {
+    foreach ($cats as $cate) {
+        if ($cate->cat_ID == $cateId) {
+            $listCateHome[] = $cate;
+        }
+    }
+}
 
 $list_post_cate = [];
-for ($i = 0; $i < 6; $i++) {
+for ($i = 0; $i < count($listCateHome); $i++) {
     $list_post = [];
-    $list_post['cate_title'] = $cats[$i]->name;
-    $list_post['cate_id'] = $cats[$i]->cat_ID;
+    $list_post['cate_title'] = $listCateHome[$i]->name;
+    $list_post['cate_id'] = $listCateHome[$i]->cat_ID;
 
     $list_post['posts'] = get_posts([
-        "category"          => $cats[$i]->cat_ID,
+        "category"          => $listCateHome[$i]->cat_ID,
         'numberposts'       => 4,
         'orderby'           => 'post_date',
         'order'             => 'DESC',
@@ -56,8 +87,6 @@ $cat_args = array(
 );
 
 $product_categories = get_terms( 'product_cat', $cat_args );
-
-print_r($product_categories);
 ?>
 
 <div class="container home-content">
@@ -127,125 +156,7 @@ print_r($product_categories);
             <?php } ?>
         </div>
         <div class="col-sm-4">
-            <div class="content-right">
-                <a href="#" class="home-banner-right">
-                    <img src="https://dinhduongbabau.net/wp-content/uploads/2020/02/tang-suc-de-khang-ba-bau-mua-dich-covid19.jpg" alt="">
-                </a>
-                <a href="#" class="home-banner-right">
-                    <img src="https://dinhduongbabau.net/wp-content/uploads/2019/01/y-dinh-duong-ba-bau.jpg" alt="">
-                </a>
-                <a href="#" class="home-banner-right">
-                    <img src="https://dinhduongbabau.net/wp-content/uploads/2018/08/widget-ddbb-e1533622168600.jpg" alt="">
-                </a>
-                <div class="content-right-search">
-                    <form class="content-right-form" action="http://localhost:6060/" method="get">
-                        <select class="d-none" name="product_cat">
-                            <option value="0" selected>All Categories</option>
-                        </select>
-
-                        <label class="screen-reader-text">Tìm kiếmr</label>
-                        <input type="search" name="s" id="" value="" placeholder="Bạn tìm kiếm gì ...">
-                        <button type="submit"><span class="fa icon fa-search"></span></button>
-                        <input type="hidden" name="post_type" value="product">
-                    </form>
-                </div>
-                <div class="content-right-qa">
-                    <div class="content-right-qa-title">
-                        HỎI ĐÁP – TƯ VẤN TRỰC TUYẾN
-                    </div>
-                    <div class="content-right-qa-main">
-                            <ul>
-                                <li>
-                                    <a href="#" class="content-right-qa-item">
-                                        E be nhe can hon so voi tuoi thai
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="content-right-qa-item">
-                                        Bà bầu khó thở, làm gì để giảm bớt?
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="content-right-qa-item">
-                                        Bí quyết nhận biết Omega 3 loại nào tốt nhất?
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="content-right-qa-item">
-                                        Thuốc procare cho bà bầu của nước nào?
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="content-right-qa-item">
-                                        Bà bầu khó thở, làm gì để giảm bớt?
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="content-right-qa-item">
-                                        Bí quyết nhận biết Omega 3 loại nào tốt nhất?
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="content-right-qa-item">
-                                        Thuốc procare cho bà bầu của nước nào?
-                                    </a>
-                                </li>
-                            </ul>
-                    </div>
-                    <a href="#" class="content-right-qa-seemore">Xem thêm</a>
-                </div>
-                <div class="content-right-news">
-                    <div class="content-right-news-title">
-                        BÀI VIẾT MỚI NHẤT
-                    </div>
-                    <div class="content-right-news-main">
-                        <ul>
-                            <li>
-                                <a href="#" class="content-right-news-item">
-                                    Chế độ dinh dưỡng thế nào để phòng chống thiếu máu khi mang thai?
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="content-right-news-item">
-                                    Bà bầu khó thở, làm gì để giảm bớt?
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="content-right-news-item">
-                                    Bí quyết nhận biết Omega 3 loại nào tốt nhất?
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="content-right-news-item">
-                                    Thuốc procare cho bà bầu của nước nào?
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="content-right-news-item">
-                                    Bà bầu khó thở, làm gì để giảm bớt?
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="content-right-btn-qa">
-                    <a href="#" class="">Đặt câu hỏi cho chuyên gia</a>
-                </div>
-                <div class="content-right-vid">
-                    <div class="content-right-vid-title">
-                        Video clips
-                    </div>
-                    <div class="content-right-vid-main">
-                        <div CLASS="content-right-vid-item">
-                            <iframe src="https://www.youtube.com/embed/3SJ-9414U1o" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                            <div class="content-right-vid-item-name">
-                                <span class="dashicons dashicons-video-alt2"></span>
-                                Tự tin đảm bảo dinh dưỡng “ĐỦ-ĐÚNG” tốt nhất cho con khi mang thai
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <?php include_once 'aside_tab.php'?>
         </div>
     </div>
 </div>

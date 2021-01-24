@@ -6,6 +6,20 @@
  */
 
 global $wpdb;
+
+$hunmendCustoms =  $wpdb->get_results(  $wpdb->prepare("SELECT * FROM $wpdb->hunmend_customs WHERE status = %d ORDER BY sort ASC", 1));
+$hunmendData = [];
+$listIsArray = ['NAV_HEADER', 'POST_TOP', 'FEATURE', 'CATE_HOME'];
+if (count($hunmendCustoms) != 0) {
+    foreach ($hunmendCustoms as $hunmend) {
+        if (in_array($hunmend->name, $listIsArray)) {
+            $hunmendData[$hunmend->name][] = $hunmend->value;
+        } else {
+            $hunmendData[$hunmend->name] = $hunmend->value;
+        }
+    }
+}
+
 $args = array(
     'taxonomy' => 'category',
     'orderby' => 'term_id',
@@ -16,10 +30,32 @@ $args = array(
     'title_li' => '',
 );
 $cats = get_categories($args);
+
+$listCateNav = [];
+foreach ($hunmendData['NAV_HEADER'] as $cateId) {
+    foreach ($cats as $cate) {
+        if ($cate->cat_ID == $cateId) {
+            $listCateNav[] = $cate;
+        }
+    }
+}
+
+$listCateFeature = [];
+foreach ($hunmendData['FEATURE'] as $cateId) {
+    foreach ($cats as $cate) {
+        if ($cate->cat_ID == $cateId) {
+            $listCateFeature[] = $cate;
+        }
+    }
+}
+
 //print_r($cats);
 //$moderation = $wpdb->get_col( $wpdb->prepare( "SELECT * FROM {$wpdb->ca} WHERE comment_approved = '0' LIMIT %d OFFSET %d", $limit, $start ) );
 
-
+$bannerHead =  $wpdb->get_row( "SELECT * FROM $wpdb->hunmend_banners WHERE type=1");
+$bannerHeadMobie =  $wpdb->get_row( "SELECT * FROM $wpdb->hunmend_banners WHERE type=4");
+$bannerMain =  $wpdb->get_results( "SELECT * FROM $wpdb->hunmend_banners WHERE type=2");
+$bannerMainMobie =  $wpdb->get_results( "SELECT * FROM $wpdb->hunmend_banners WHERE type=5");
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?> class="no-js">
@@ -45,10 +81,10 @@ $cats = get_categories($args);
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v9.0&appId=196414931235563&autoLogAppEvents=1" nonce="12bKG53Q"></script>
 
     <header class="custom-header">
-        <div class="header-content">
+        <div class="header-content" style="background: url('<?php echo $bannerHead->value ?>') no-repeat center /cover">
             <div class="header-top">
                 <div class="header-top-search">
-                    <form class="top-search" action="http://localhost:6060/" method="get">
+                    <form class="top-search" action="<?php echo esc_url( home_url( '/' )) ?>" method="get">
 
                         <label class="screen-reader-text" for="woocommerce-product-search-field">Search for</label>
                         <input type="search" name="s" id="" value="" placeholder="Bạn tìm kiếm gì ...">
@@ -94,26 +130,23 @@ $cats = get_categories($args);
         <ul>
             <?php
             $content = "";
-            foreach ($cats as $cat) {
-                if ($cat->category_parent == 0) {
-                    $content .= "<li><a href='" . esc_url( home_url( '/' )."?cat=".$cat->term_id ) . "'>$cat->name</a>";
-                    $hasCateChild = false;
-                    foreach ($cats as $catChild) {
-                        if ($catChild->category_parent == $cat->term_id) {
-                            if (!$hasCateChild) {
-                                $content .= "<ul>";
-                                $hasCateChild = true;
-                            }
-                            $content .= "<li><a href='" . esc_url( home_url( '/' )."?cat=".$catChild->term_id ) . "'>$catChild->name</a></li>";
+            foreach ($listCateNav as $cat) {
+                $content .= "<li><a href='" . esc_url( home_url( '/' )."?cat=".$cat->term_id ) . "'>$cat->name</a>";
+                $hasCateChild = false;
+                foreach ($cats as $catChild) {
+                    if ($catChild->category_parent == $cat->term_id) {
+                        if (!$hasCateChild) {
+                            $content .= "<ul>";
+                            $hasCateChild = true;
                         }
-                    }
-                    if ($hasCateChild) {
-                        $content .= "</ul></li>";
-                    } else {
-                        $content .= "</li>";
+                        $content .= "<li><a href='" . esc_url( home_url( '/' )."?cat=".$catChild->term_id ) . "'>$catChild->name</a></li>";
                     }
                 }
-
+                if ($hasCateChild) {
+                    $content .= "</ul></li>";
+                } else {
+                    $content .= "</li>";
+                }
             }
             echo $content;
             ?>
@@ -128,12 +161,11 @@ $cats = get_categories($args);
                     </div>
                     <div class="focal-content">
                         <ul>
+                            <?php foreach ($listCateFeature as $cateFeature) { ?>
                             <li>
-                                <a href="#">Sản phẩm PM Procare</a>
+                                <a href="<?php echo esc_url( home_url( '/' )."?cat=".$cateFeature->term_id )?>>"><?php echo $cateFeature->name ?></a>
                             </li>
-                            <li>
-                                <a href="#">Sản phẩm PM Procare diamond</a>
-                            </li>
+                            <?php } ?>
                         </ul>
                     </div>
                 </div>
@@ -142,9 +174,13 @@ $cats = get_categories($args);
     </div>
 
     <div class="banner-header owl-carousel owl-theme">
+        <?php foreach ($bannerMain as $banner) { ?>
         <div class="item">
-            <img src="https://dinhduongbabau.net/wp-content/uploads/2020/06/banner-procare-diamond.jpg" alt="">
+            <a href="<?php echo $banner->links?>" target="_blank">
+                <img src="<?php echo $banner->value?>" alt="<?php echo $banner->title?>">
+            </a>
         </div>
+        <?php } ?>
         <div class="item">
             <img src="https://dinhduongbabau.net/wp-content/uploads/2019/11/canxi-cho-me.jpg" alt="">
         </div>
