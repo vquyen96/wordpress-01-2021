@@ -1,0 +1,22 @@
+2021-01-24T11:48:02+00:00 CRITICAL require_once(): Failed opening required '/var/www/html/wp-content/plugins/hunmend-customs/admin.php' (include_path='.:/usr/local/lib/php') in /var/www/html/wp-content/plugins/hunmend-customs/banner.php on line 10
+
+2021-01-24T14:15:51+00:00 CRITICAL Uncaught Error: Call to undefined function dbDelta() in /var/www/html/wp-content/plugins/hunmend-customs/banner.php:18
+Stack trace:
+#0 /var/www/html/wp-admin/admin.php(293): include()
+#1 {main}
+  thrown in /var/www/html/wp-content/plugins/hunmend-customs/banner.php on line 18
+
+2021-01-24T14:16:12+00:00 CRITICAL Uncaught Error: Call to undefined function dbDelta() in /var/www/html/wp-content/plugins/hunmend-customs/banner.php:20
+Stack trace:
+#0 /var/www/html/wp-admin/admin.php(293): include()
+#1 {main}
+  thrown in /var/www/html/wp-content/plugins/hunmend-customs/banner.php on line 20
+
+2021-01-24T14:16:22+00:00 CRITICAL Uncaught Error: Call to undefined function dbDelta() in /var/www/html/wp-content/plugins/hunmend-customs/banner.php:21
+Stack trace:
+#0 /var/www/html/wp-admin/admin.php(293): include()
+#1 {main}
+  thrown in /var/www/html/wp-content/plugins/hunmend-customs/banner.php on line 21
+
+2021-01-24T16:30:58+00:00 CRITICAL syntax error, unexpected '$i' (T_VARIABLE) in /var/www/html/wp-content/plugins/hunmend-customs/banner.php on line 126
+

@@ -212,7 +212,6 @@ body {
 	max-width: 1200px;
 	margin: auto;
 	/*margin: 0 30px;*/
-	background: url(https://dinhduongbabau.net/wp-content/themes/caia/images/bg-header-small.jpg) no-repeat center /cover;
 }
 
 .header-content::after {
@@ -498,6 +497,7 @@ a.home-top-big-title {
 	margin-bottom: 10px;
 	display: flex;
 	margin-right: 20px;
+	flex: 1;
 }
 
 a.home-top-small-img {
