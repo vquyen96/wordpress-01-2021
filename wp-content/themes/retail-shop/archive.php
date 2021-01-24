@@ -27,12 +27,12 @@ get_header();
 //    )
 //);
 $args = [
-    'category' => 24
+    'category' => get_queried_object_id()
 ];
 
 $list_post = get_posts($args);
 
-$cate = get_category(24);
+$cate = get_category(get_queried_object_id());
 global $ecommerce_star_option;
 if ( class_exists( 'WP_Customize_Control' ) ) {
    $ecommerce_star_option = wp_parse_args(  get_option( 'ecommerce_star_option', array() ) , ecommerce_star_settings());  

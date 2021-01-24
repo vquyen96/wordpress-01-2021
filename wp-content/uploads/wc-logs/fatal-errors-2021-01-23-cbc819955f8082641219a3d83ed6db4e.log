@@ -1,0 +1,8 @@
+2021-01-23T03:04:43+00:00 CRITICAL Uncaught Error: Call to undefined function size() in /var/www/html/wp-content/themes/retail-shop/index.php:103
+Stack trace:
+#0 /var/www/html/wp-includes/template-loader.php(106): include()
+#1 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#2 /var/www/html/index.php(17): require('/var/www/html/w...')
+#3 {main}
+  thrown in /var/www/html/wp-content/themes/retail-shop/index.php on line 103
+

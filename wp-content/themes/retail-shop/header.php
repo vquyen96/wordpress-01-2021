@@ -8,15 +8,15 @@
 global $wpdb;
 $args = array(
     'taxonomy' => 'category',
-    'orderby' => 'date',
-    'order' => 'DESC',
+    'orderby' => 'term_id',
+    'order' => 'ASC',
     'show_count' => 1,
     'pad_counts' => 0,
     'hierarchical' => 0,
     'title_li' => '',
-    'hide_empty' => 1,
 );
 $cats = get_categories($args);
+//print_r($cats);
 //$moderation = $wpdb->get_col( $wpdb->prepare( "SELECT * FROM {$wpdb->ca} WHERE comment_approved = '0' LIMIT %d OFFSET %d", $limit, $start ) );
 
 
@@ -56,9 +56,8 @@ $cats = get_categories($args);
                     </form>
                 </div>
                 <div class="header-top-nav">
-                    <a href="https://dinhduongbabau.net/">Trang chủ</a>
-                    <a href="https://dinhduongbabau.net/dinh-duong-ba-bau/">Giới thiệu</a>
-                    <a href="https://dinhduongbabau.net/lien-he/">Liên hệ</a>
+                    <a href="<?php echo esc_url( home_url( '/' )) ?>">Trang chủ</a>
+                        <a href="https://dinhduongbabau.net/lien-he/">Liên hệ</a>
                     <div id="cart-wishlist-container">
                         <table class="cart-wishlist-table">
                             <tr>
