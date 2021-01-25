@@ -10,15 +10,10 @@ $bannerAside =  $wpdb->get_results( "SELECT * FROM $wpdb->hunmend_banners WHERE 
     </a>
     <?php } ?>
     <div class="content-right-search">
-        <form class="content-right-form" action="http://localhost:6060/" method="get">
-            <select class="d-none" name="product_cat">
-                <option value="0" selected>All Categories</option>
-            </select>
-
+        <form class="content-right-form" action="<?php echo esc_url( home_url( '/' )) ?>" method="get">
             <label class="screen-reader-text">Tìm kiếmr</label>
             <input type="search" name="s" id="" value="" placeholder="Bạn tìm kiếm gì ...">
             <button type="submit"><span class="fa icon fa-search"></span></button>
-            <input type="hidden" name="post_type" value="product">
         </form>
     </div>
     <div class="content-right-qa">

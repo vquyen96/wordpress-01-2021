@@ -35,6 +35,22 @@ $retail_shop_class = $retail_shop_class. ' footer-foreground';
 if($retail_shop_option['after_shop'] !=''  && class_exists( 'WooCommerce' ) && is_shop()){
 	get_template_part( 'sections/after', 'shop');  
 }
+
+global $wpdb;
+
+$hunmendCustoms =  $wpdb->get_results(  $wpdb->prepare("SELECT * FROM $wpdb->hunmend_customs WHERE status = %d ORDER BY sort ASC", 1));
+$hunmendData = [];
+$listIsArray = ['NAV_HEADER', 'POST_TOP', 'FEATURE', 'CATE_HOME'];
+if (count($hunmendCustoms) != 0) {
+    foreach ($hunmendCustoms as $hunmend) {
+        if (in_array($hunmend->name, $listIsArray)) {
+            $hunmendData[$hunmend->name][] = $hunmend->value;
+        } else {
+            $hunmendData[$hunmend->name] = $hunmend->value;
+        }
+    }
+}
+
 ?>
 
 <footer>
@@ -86,9 +102,47 @@ if($retail_shop_option['box_layout']){
 }
 
 wp_footer(); ?>
+<a href="tel:<?php echo $hunmendData['PHONE']?>" class="call-now" rel="nofollow">
+    <div class="kenit-alo-phone">
+        <div class="animated infinite zoomIn kenit-alo-circle"></div>
+        <div class="animated infinite pulse kenit-alo-circle-fill"></div>
+        <div class="animated infinite tada kenit-alo-img-circle"></div>
+        <span><?php echo $hunmendData['PHONE']?></span>
+    </div>
+</a>
+
+
+<!-- Load Facebook SDK for JavaScript -->
+<div id="fb-root"></div>
+<script>
+    window.fbAsyncInit = function() {
+        FB.init({
+            xfbml            : true,
+            version          : 'v9.0'
+        });
+    };
+
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+<!-- Your Chat Plugin code -->
+<div class="fb-customerchat"
+     attribution=setup_tool
+     page_id="111184877432358"
+     theme_color="#003d70">
+</div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 <script>
+    $(document).on('click', '.btn-menu-mobie , .btn-menu-mobie-hide', function () {
+        $('nav.nav-menu').toggle();
+    });
     $('.owl-carousel').owlCarousel({
         loop:true,
         margin:10,

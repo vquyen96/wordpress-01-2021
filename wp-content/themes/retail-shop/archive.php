@@ -69,7 +69,7 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
                         the_title( sprintf( '<h2 class="entry-title list-cate-item-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' );
                         ?>
                         <p class="list-cate-item-summary">
-                            <?php the_excerpt(); ?>
+                            <?php echo cut_string(get_the_excerpt(get_the_id()), 300) ; ?>
                         </p>
                         <a href="<?php the_permalink(); ?>" class="list-cate-item-seemore">Xem chi tiết >></a>
                     </div>
