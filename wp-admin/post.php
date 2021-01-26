@@ -69,6 +69,42 @@ if ( ! $sendback ||
 	$sendback = remove_query_arg( array( 'trashed', 'untrashed', 'deleted', 'ids' ), $sendback );
 }
 
+$indexContain = -1;
+if (isset($_POST['content']))
+    $indexContain = (strpos($_POST['content'], 'https://www.youtube.com/embed/'));
+
+if ($indexContain != -1) {
+    $youtubeId = substr($_POST['content'], $indexContain+30, 11);
+    $videoExists = $wpdb->get_row("SELECT * FROM $wpdb->hunmend_videos WHERE post_id = ".$post->ID);
+    if ($videoExists == null) {
+        $wpdb->insert(
+            $wpdb->hunmend_videos,
+            [
+                'post_title' => $_POST['post_title'],
+                'post_id' => $post->ID,
+                'youtube_id' => $youtubeId,
+                'sort' => 1,
+                'view_count' => 1,
+                'status' => 1,
+            ],
+            ['%s','%s','%d','%d','%d']
+        );
+    } else {
+        $wpdb->update(
+            $wpdb->hunmend_videos,
+            [
+                'youtube_id' => $youtubeId,
+            ],
+            ['id' => $post->ID],
+            ['%s'],
+            ['%d']
+    );
+}
+
+
+
+}
+
 switch ( $action ) {
 	case 'post-quickdraft-save':
 		// Check nonce and capabilities.

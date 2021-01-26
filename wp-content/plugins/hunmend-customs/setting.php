@@ -10,6 +10,7 @@ global $wpdb;
 $dataType = [
     'PHONE'         => 'single',
     'FB_PAGE'       => 'single',
+    'CONTACT_CONTENT' => 'single',
     'NAV_HEADER'    => 'list',
     'FEATURE'       => 'list',
     'POST_TOP'      => 'list',
@@ -137,6 +138,12 @@ $list_post_top = get_posts($args);
                 <th width="20%" scope="row" valign="top"><?php _e('Link page Facebook', 'hunmend-customs') ?></th>
                 <td width="80%">
                     <input type="text" size="70" name="FB_PAGE" value="<?php echo $hunmendData['FB_PAGE']?>" />
+                </td>
+            </tr>
+            <tr>
+                <th width="20%" scope="row" valign="top"><?php _e('Đặt câu hỏi', 'hunmend-customs') ?></th>
+                <td width="80%">
+                    <?php wp_editor($hunmendData['CONTACT_CONTENT'], 'CONTACT_CONTENT', ['editor_height' => 300, 'media_buttons' => FALSE, 'quicktags' => false, 'readonly' => true]) ?>
                 </td>
             </tr>
         </table>

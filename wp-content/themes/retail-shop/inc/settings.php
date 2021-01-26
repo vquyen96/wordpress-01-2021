@@ -43,7 +43,7 @@ if( !function_exists('ecommerce_star_settings') ){
 			'colorscheme_color' => '#26a3ee',
 			
 			'navigation_font_size' => '15',
-			'header_fontfamily' => 'Poppins',
+			'header_fontfamily' => 'Roboto',
 			'body_fontfamily' => 'Roboto',
 			
 			'mini_header_color' => '#f7f7f7',
