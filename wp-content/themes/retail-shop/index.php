@@ -90,6 +90,19 @@ $cat_args = array(
 $product_categories = get_terms( 'product_cat', $cat_args );
 
 $questions =  $wpdb->get_results("SELECT * FROM $wpdb->hunmend_questions WHERE answer != '' ORDER BY id DESC LIMIT 10");
+$videoList =  $wpdb->get_results("SELECT * FROM $wpdb->hunmend_videos ORDER BY id DESC LIMIT 10");
+$videoIds = [];
+foreach ($videoList as $video) {
+    $videoIds[] = $video->post_id;
+}
+
+$postVideos = get_posts([
+    'numberposts'       => 4,
+    'orderby'           => 'post_date',
+    'order'             => 'DESC',
+    'post_type'         => 'post',
+    'include'           => $videoIds
+]);
 
 // Contact
 if (isset($_POST['do'])) {
@@ -156,6 +169,44 @@ if (isset($_POST['do'])) {
                     </div>
                     <?php } ?>
                 </div>
+            <?php } else if ($_GET['page'] == 'video') {?>
+                <div class="">
+                    <h1 class="list-cate-left-title">
+                        Video tư vấn
+                    </h1>
+                    <?php foreach ($postVideos as $postVid) { ?>
+                        <div class="list-cate-item">
+                            <div class="list-cate-item-img">
+                                <?php if( has_post_thumbnail($postVid->ID) ) { ?>
+                                    <div class="post-thumbnail" >
+                                        <a href="<?php echo get_permalink($postVid->ID);?>" style="background: url('<?php echo get_the_post_thumbnail_url($postVid->ID,'medium_large') ?>') no-repeat center /cover">
+<!--                                            --><?php //the_post_thumbnail('full'); ?>
+                                        </a>
+                                    </div><!-- .post-thumbnail -->
+                                <?php } else { ?>
+                                    <div class="post-thumbnail" style="background: #ccc">
+                                        <a href="<?php echo get_permalink($postVid->ID);?>">
+
+                                        </a>
+                                    </div><!-- .post-thumbnail -->
+                                <?php } ?>
+                            </div>
+
+                            <div class="list-cate-item-content">
+                                <h2 class="entry-title list-cate-item-title">
+                                    <a href="<?php echo get_permalink($postVid->ID);?>" rel="bookmark">
+                                        <?php echo $postVid->post_title?>
+                                    </a>
+                                </h2>
+                                <p class="list-cate-item-summary">
+                                    <?php echo cut_string(get_the_excerpt($postVid->ID), 300) ; ?>
+                                </p>
+                                <a href="<?php echo get_permalink($postVid->ID);?>" class="list-cate-item-seemore">Xem chi tiết >></a>
+                            </div>
+                        </div>
+                    <?php } ?>
+                </div>
+
             <?php } else {?>
             <div class="home-top">
                 <div class="home-top-big owl-carousel owl-theme">

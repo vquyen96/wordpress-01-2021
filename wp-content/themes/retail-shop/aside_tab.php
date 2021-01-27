@@ -2,6 +2,28 @@
 
 $bannerAside =  $wpdb->get_results( "SELECT * FROM $wpdb->hunmend_banners WHERE type=3");
 
+$hunmendCustoms =  $wpdb->get_results(  $wpdb->prepare("SELECT * FROM $wpdb->hunmend_customs WHERE status = %d ORDER BY sort ASC", 1));
+$hunmendData = [];
+$listIsArray = ['NAV_HEADER', 'POST_TOP', 'FEATURE', 'CATE_HOME'];
+if (count($hunmendCustoms) != 0) {
+    foreach ($hunmendCustoms as $hunmend) {
+        if (in_array($hunmend->name, $listIsArray)) {
+            $hunmendData[$hunmend->name][] = $hunmend->value;
+        } else {
+            $hunmendData[$hunmend->name] = $hunmend->value;
+        }
+    }
+}
+
+$hunmendQuestions =  $wpdb->get_results(  $wpdb->prepare("SELECT * FROM $wpdb->hunmend_questions WHERE status = %d AND answer != '' ORDER BY id DESC LIMIT 6 ", 1));
+$hunmendVideo =  $wpdb->get_results(  $wpdb->prepare("SELECT * FROM $wpdb->hunmend_videos WHERE status = %d ORDER BY id DESC LIMIT 6 ", 1));
+$postNews = get_posts([
+    'numberposts'       => 5,
+    'orderby'           => 'post_date',
+    'order'             => 'DESC',
+    'post_type'         => 'post',
+]);
+
 ?>
 <div class="content-right">
     <?php foreach ($bannerAside as $banner) { ?>
@@ -22,44 +44,17 @@ $bannerAside =  $wpdb->get_results( "SELECT * FROM $wpdb->hunmend_banners WHERE 
         </div>
         <div class="content-right-qa-main">
             <ul>
+                <?php foreach($hunmendQuestions as $question) { ?>
                 <li>
                     <a href="#" class="content-right-qa-item">
-                        E be nhe can hon so voi tuoi thai
+                        <?php echo $question->question_title?>
                     </a>
                 </li>
-                <li>
-                    <a href="#" class="content-right-qa-item">
-                        Bà bầu khó thở, làm gì để giảm bớt?
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="content-right-qa-item">
-                        Bí quyết nhận biết Omega 3 loại nào tốt nhất?
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="content-right-qa-item">
-                        Thuốc procare cho bà bầu của nước nào?
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="content-right-qa-item">
-                        Bà bầu khó thở, làm gì để giảm bớt?
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="content-right-qa-item">
-                        Bí quyết nhận biết Omega 3 loại nào tốt nhất?
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="content-right-qa-item">
-                        Thuốc procare cho bà bầu của nước nào?
-                    </a>
-                </li>
+                <?php } ?>
+
             </ul>
         </div>
-        <a href="#" class="content-right-qa-seemore">Xem thêm</a>
+        <a href="<?php echo esc_url( home_url( '/' )) ?>?page=contact" class="content-right-qa-seemore">Xem thêm</a>
     </div>
     <div class="content-right-news">
         <div class="content-right-news-title">
@@ -67,48 +62,38 @@ $bannerAside =  $wpdb->get_results( "SELECT * FROM $wpdb->hunmend_banners WHERE 
         </div>
         <div class="content-right-news-main">
             <ul>
+                <?php foreach($postNews as $post) { ?>
                 <li>
-                    <a href="#" class="content-right-news-item">
-                        Chế độ dinh dưỡng thế nào để phòng chống thiếu máu khi mang thai?
+                    <a href="<?php echo get_permalink($post->ID);?>" class="content-right-news-item">
+                        <?php echo cut_string($post->post_title, 100) ?>
                     </a>
                 </li>
-                <li>
-                    <a href="#" class="content-right-news-item">
-                        Bà bầu khó thở, làm gì để giảm bớt?
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="content-right-news-item">
-                        Bí quyết nhận biết Omega 3 loại nào tốt nhất?
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="content-right-news-item">
-                        Thuốc procare cho bà bầu của nước nào?
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="content-right-news-item">
-                        Bà bầu khó thở, làm gì để giảm bớt?
-                    </a>
-                </li>
+                <?php } ?>
             </ul>
         </div>
     </div>
     <div class="content-right-btn-qa">
-        <a href="#" class="">Đặt câu hỏi cho chuyên gia</a>
+        <a href="<?php echo esc_url( home_url( '/' )) ?>?page=contact" class="">Đặt câu hỏi cho chuyên gia</a>
     </div>
     <div class="content-right-vid">
         <div class="content-right-vid-title">
             Video clips
         </div>
         <div class="content-right-vid-main">
-            <div CLASS="content-right-vid-item">
-                <iframe src="https://www.youtube.com/embed/3SJ-9414U1o" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <div class="content-right-vid-item-name">
-                    <span class="dashicons dashicons-video-alt2"></span>
-                    Tự tin đảm bảo dinh dưỡng “ĐỦ-ĐÚNG” tốt nhất cho con khi mang thai
-                </div>
+            <div class="content-right-vid-item">
+                <?php foreach($hunmendVideo as $index => $video) { ?>
+                    <?php if ($index == 0) { ?>
+                        <iframe src="https://www.youtube.com/embed/<?php echo $video->youtube_id ?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <a href="<?php echo get_permalink($video->post_id);?>" class="content-right-vid-item-name active">
+                            <span class="dashicons dashicons-video-alt2"></span>
+                            <?php echo cut_string($video->post_title, 60) ?>
+                        </a>
+                    <?php } else { ?>
+                        <a href="<?php echo get_permalink($video->post_id);?>" class="content-right-vid-item-name">
+                            <span class="dashicons dashicons-video-alt2"></span>
+                            <?php echo cut_string($video->post_title, 60) ?>
+                        </a>
+                <?php } } ?>
             </div>
         </div>
     </div>
