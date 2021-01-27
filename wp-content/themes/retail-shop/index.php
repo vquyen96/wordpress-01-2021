@@ -2,6 +2,7 @@
 
 global $wpdb;
 
+
 $hunmendCustoms =  $wpdb->get_results(  $wpdb->prepare("SELECT * FROM $wpdb->hunmend_customs WHERE status = %d ORDER BY sort ASC", 1));
 $hunmendData = [];
 $listIsArray = ['NAV_HEADER', 'POST_TOP', 'FEATURE', 'CATE_HOME'];
@@ -87,11 +88,75 @@ $cat_args = array(
 );
 
 $product_categories = get_terms( 'product_cat', $cat_args );
+
+$questions =  $wpdb->get_results("SELECT * FROM $wpdb->hunmend_questions WHERE answer != '' ORDER BY id DESC LIMIT 10");
+
+// Contact
+if (isset($_POST['do'])) {
+    $dataQues = [
+            'name' => $_POST['fullname'],
+            'phone' => $_POST['phone'],
+            'age' => $_POST['age'],
+            'question_title' => $_POST['question_title'],
+            'question_content' => $_POST['question_content'],
+    ];
+    $questionResult = $wpdb->insert(
+            $wpdb->hunmend_questions,
+            $dataQues,
+            ['%s','%s','%d','%s','%s']
+        );
+
+}
 ?>
 
 <div class="container home-content">
     <div class="row">
         <div class="col-sm-8 home-content-left">
+            <?php if ($_GET['page'] == 'contact') { ?>
+                <?php echo $hunmendData['CONTACT_CONTENT']?>
+                <form action="" method="post" enctype="multipart/form-data">
+                    <div class="form-group mb-2">
+                        <label for="" class="form-question-title"><?php _e('Họ tên', 'hunmend-customs') ?> <span></span></label>
+                        <input type="text" name="fullname" value="" class="form-question-input" />
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="" class="form-question-title"><?php _e('Số điện thoại', 'hunmend-customs') ?></label>
+                        <input type="text" name="phone" value="" class="form-question-input"/>
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="" class="form-question-title"><?php _e('Tuổi thai nhi', 'hunmend-customs') ?></label>
+                        <input type="text"  name="age" value="" class="form-question-input"/>
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="" class="form-question-title"><?php _e('Miêu tả ngắn gọn câu hỏi', 'hunmend-customs') ?></label>
+                        <input type="text" name="question_title" value="" class="form-question-input"/>
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="" class="form-question-title"><?php _e('Chi tiết câu hỏi', 'hunmend-customs') ?></label>
+                        <?php wp_editor('', 'question_content', ['editor_height' => 300]) ?>
+                    </div>
+                    <div class="form-group mb-2">
+                        <input type="submit" name="do" value="<?php _e('Gửi câu hỏi', 'hunmend-customs') ; ?>"  class="form-question-btn" />
+                    </div>
+                </form>
+
+                <h3>Những câu hỏi thường gặp</h3>
+                <div class="question-list">
+                    <?php foreach ($questions as $question) { ?>
+                    <div class="question-item">
+                        <div class="question-title">Câu hỏi: <?php echo $question->question_title ?></div>
+                        <div class="question-info">Hỏi bởi <?php echo $question->name ?> lúc 30-06-2020 09:40</div>
+                        <div class="question-main">
+                            <img src="https://img.icons8.com/cotton/2x/doctor-skin-type-1.png" alt="" class="question-main-img">
+                            <div class="question-main-answer">
+                                <?php echo cut_string($question->answer, 250) ?>
+                                <a href="#">Xem thêm</a>
+                            </div>
+                        </div>
+                    </div>
+                    <?php } ?>
+                </div>
+            <?php } else {?>
             <div class="home-top">
                 <div class="home-top-big owl-carousel owl-theme">
                     <?php for ($i = 0; $i < 3; $i++) {?>
@@ -153,6 +218,7 @@ $product_categories = get_terms( 'product_cat', $cat_args );
                 </div>
                 <?php } ?>
             </div>
+            <?php } ?>
             <?php } ?>
         </div>
         <div class="col-sm-4">

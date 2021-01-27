@@ -75,7 +75,7 @@ $bannerMainMobie =  $wpdb->get_results( "SELECT * FROM $wpdb->hunmend_banners WH
 ?>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
-</head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"></head>
 <body <?php body_class(); ?>>
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v9.0&appId=196414931235563&autoLogAppEvents=1" nonce="12bKG53Q"></script>
@@ -93,7 +93,7 @@ $bannerMainMobie =  $wpdb->get_results( "SELECT * FROM $wpdb->hunmend_banners WH
                 </div>
                 <div class="header-top-nav">
                     <a href="<?php echo esc_url( home_url( '/' )) ?>">Trang chủ</a>
-                        <a href="https://dinhduongbabau.net/lien-he/">Liên hệ</a>
+                        <a href="tel:<?php echo $hunmendData['PHONE'] ?>">Liên hệ <?php echo $hunmendData['PHONE'] ?></a>
                     <div id="cart-wishlist-container">
                         <table class="cart-wishlist-table">
                             <tr>
@@ -125,6 +125,9 @@ $bannerMainMobie =  $wpdb->get_results( "SELECT * FROM $wpdb->hunmend_banners WH
                 <a href="<?php echo esc_url( home_url( '/' )) ?>"></a>
             </div>
         </div>
+        <a href="<?php echo esc_url( home_url( '/' ) ) ?>" class="header-content-mobie responsive-768" style="background: url('<?php echo $bannerHeadMobie->value ?>') no-repeat center /cover">
+
+        </a>
     </header>
     <nav class="nav-menu">
         <ul>
@@ -150,9 +153,15 @@ $bannerMainMobie =  $wpdb->get_results( "SELECT * FROM $wpdb->hunmend_banners WH
             }
             echo $content;
             ?>
+            <li><a href="<?php echo esc_url( home_url( '/' )) ?>?page=contact">Tư vấn hỏi đáp</a></li>
+            <li><a href="<?php echo esc_url( home_url( '/' )) ?>?product_cat=uncategorized">Góc chia sẻ mẹ bầu</a></li>
+            <li><a href="#">Video bác sĩ tư vấn</a></li>
         </ul>
+        <div class="btn-menu-mobie-hide">
+            <span class="dashicons dashicons-menu"></span>
+        </div>
     </nav>
-    <div class="container">
+    <div class="container focal-bg">
         <div class="row">
             <div class="col-12">
                 <div class="focal">
@@ -161,6 +170,9 @@ $bannerMainMobie =  $wpdb->get_results( "SELECT * FROM $wpdb->hunmend_banners WH
                     </div>
                     <div class="focal-content">
                         <ul>
+                            <li class="responsive-768">
+                                <a href="<?php echo esc_url( home_url( '/' )."?cat=".$catChild->term_id ) ?>">Trang chủ</a>
+                            </li>
                             <?php foreach ($listCateFeature as $cateFeature) { ?>
                             <li>
                                 <a href="<?php echo esc_url( home_url( '/' )."?cat=".$cateFeature->term_id )?>>"><?php echo $cateFeature->name ?></a>
@@ -168,20 +180,34 @@ $bannerMainMobie =  $wpdb->get_results( "SELECT * FROM $wpdb->hunmend_banners WH
                             <?php } ?>
                         </ul>
                     </div>
+                    <div class="btn-menu-mobie">
+                        <span class="dashicons dashicons-menu"></span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="banner-header owl-carousel owl-theme">
-        <?php foreach ($bannerMain as $banner) { ?>
-        <div class="item">
-            <a href="<?php echo $banner->links?>" target="_blank">
-                <img src="<?php echo $banner->value?>" alt="<?php echo $banner->title?>">
-            </a>
-        </div>
-        <?php } ?>
-        <div class="item">
-            <img src="https://dinhduongbabau.net/wp-content/uploads/2019/11/canxi-cho-me.jpg" alt="">
+    <div class="banner-header-bg">
+        <div class="banner-header owl-carousel owl-theme">
+            <?php foreach ($bannerMain as $banner) { ?>
+                <div class="item">
+                    <a href="<?php echo $banner->links?>" target="_blank">
+                        <img src="<?php echo $banner->value?>" alt="<?php echo $banner->title?>">
+                    </a>
+                </div>
+            <?php } ?>
         </div>
     </div>
+    <div class="banner-header-bg-mobie">
+        <div class="banner-header owl-carousel owl-theme">
+            <?php foreach ($bannerMainMobie as $banner) { ?>
+                <div class="item">
+                    <a href="<?php echo $banner->links?>" target="_blank">
+                        <img src="<?php echo $banner->value?>" alt="<?php echo $banner->title?>">
+                    </a>
+                </div>
+            <?php } ?>
+        </div>
+    </div>
+
