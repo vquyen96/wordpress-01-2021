@@ -29,7 +29,7 @@ export const useCheckoutSubmit = () => {
 	return {
 		submitButtonText:
 			paymentMethod?.placeOrderButtonLabel ||
-			__( 'Place Order', 'woocommerce' ),
+			__( 'Đặt hàng', 'woocommerce' ),
 		onSubmit,
 		isCalculating,
 		waitingForProcessing:
