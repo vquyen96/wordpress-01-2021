@@ -16,10 +16,12 @@ if ( ! is_active_sidebar( 'sidebar-woocommerce' ) ) {
 }	
 ?>
 
-<div class="container background">
+<div class="container product">
    <div class="row">
        <div class="col-sm-8">
-           <?php woocommerce_content(); ?>
+           <div class="product-left">
+               <?php woocommerce_content(); ?>
+           </div>
        </div>
        <div class="col-sm-4">
            <?php include_once 'aside_tab.php'?>

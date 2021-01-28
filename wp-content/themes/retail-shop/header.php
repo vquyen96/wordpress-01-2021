@@ -154,8 +154,8 @@ $bannerMainMobie =  $wpdb->get_results( "SELECT * FROM $wpdb->hunmend_banners WH
             echo $content;
             ?>
             <li><a href="<?php echo esc_url( home_url( '/' )) ?>?page=contact">Tư vấn hỏi đáp</a></li>
-            <li><a href="<?php echo esc_url( home_url( '/' )) ?>?product_cat=uncategorized">Góc chia sẻ mẹ bầu</a></li>
-            <li><a href="#">Video bác sĩ tư vấn</a></li>
+            <li><a href="<?php echo esc_url( home_url( '/' )) ?>?product_cat=uncategorized">Sản phẩm</a></li>
+            <li><a href="<?php echo esc_url( home_url( '/' )) ?>?page=video">Video tư vấn</a></li>
         </ul>
         <div class="btn-menu-mobie-hide">
             <span class="dashicons dashicons-menu"></span>
