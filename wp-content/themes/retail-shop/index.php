@@ -125,7 +125,7 @@ if (isset($_POST['do'])) {
 <div class="container home-content">
     <div class="row">
         <div class="col-sm-8 home-content-left">
-            <?php if ($_GET['page'] == 'contact') { ?>
+            <?php if (isset($_GET['page']) && $_GET['page'] == 'contact') { ?>
                 <?php echo $hunmendData['CONTACT_CONTENT']?>
                 <form action="" method="post" enctype="multipart/form-data">
                     <div class="form-group mb-2">
@@ -169,7 +169,7 @@ if (isset($_POST['do'])) {
                     </div>
                     <?php } ?>
                 </div>
-            <?php } else if ($_GET['page'] == 'video') {?>
+            <?php } else if (isset($_GET['page']) && $_GET['page'] == 'video') {?>
                 <div class="">
                     <h1 class="list-cate-left-title">
                         Video tư vấn

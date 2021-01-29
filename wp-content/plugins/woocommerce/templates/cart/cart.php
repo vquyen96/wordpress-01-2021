@@ -27,10 +27,10 @@ do_action( 'woocommerce_before_cart' ); ?>
 			<tr>
 				<th class="product-remove">&nbsp;</th>
 				<th class="product-thumbnail">&nbsp;</th>
-				<th class="product-name"><?php esc_html_e( 'Product', 'woocommerce' ); ?></th>
-				<th class="product-price"><?php esc_html_e( 'Price', 'woocommerce' ); ?></th>
-				<th class="product-quantity"><?php esc_html_e( 'Quantity', 'woocommerce' ); ?></th>
-				<th class="product-subtotal"><?php esc_html_e( 'Subtotal', 'woocommerce' ); ?></th>
+				<th class="product-name"><?php esc_html_e( 'Sản phẩm', 'woocommerce' ); ?></th>
+				<th class="product-price"><?php esc_html_e( 'Đơn giá', 'woocommerce' ); ?></th>
+				<th class="product-quantity"><?php esc_html_e( 'Số lượng', 'woocommerce' ); ?></th>
+				<th class="product-subtotal"><?php esc_html_e( 'Tạm tính', 'woocommerce' ); ?></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -74,7 +74,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 						?>
 						</td>
 
-						<td class="product-name" data-title="<?php esc_attr_e( 'Product', 'woocommerce' ); ?>">
+						<td class="product-name" data-title="<?php esc_attr_e( 'Sản phẩm', 'woocommerce' ); ?>">
 						<?php
 						if ( ! $product_permalink ) {
 							echo wp_kses_post( apply_filters( 'woocommerce_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key ) . '&nbsp;' );
@@ -122,7 +122,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 						?>
 						</td>
 
-						<td class="product-subtotal" data-title="<?php esc_attr_e( 'Subtotal', 'woocommerce' ); ?>">
+						<td class="product-subtotal" data-title="<?php esc_attr_e( 'Tạm tính', 'woocommerce' ); ?>">
 							<?php
 								echo apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $_product, $cart_item['quantity'] ), $cart_item, $cart_item_key ); // PHPCS: XSS ok.
 							?>

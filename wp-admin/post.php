@@ -69,7 +69,7 @@ if ( ! $sendback ||
 	$sendback = remove_query_arg( array( 'trashed', 'untrashed', 'deleted', 'ids' ), $sendback );
 }
 
-if ($_POST['post_type'] == 'post') {
+if (isset($_POST['post_type']) && $_POST['post_type'] == 'post') {
     $indexContain = -1;
     if (isset($_POST['content']))
         $indexContain = (strpos($_POST['content'], 'https://www.youtube.com/embed/'));
