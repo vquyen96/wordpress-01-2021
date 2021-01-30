@@ -1357,6 +1357,84 @@ h2.woocommerce-loop-product__title {
 }
 
 
+
+
+
+ul.pagination {
+	padding: 0;
+	border: 0;
+}
+li.page-item>a.page-link {
+	color: #003d70;
+}
+
+
+li.page-item.disabled>a {
+	color: #999;
+}
+
+li.page-item.disabled>a.page-link:hover {
+	color: #999 !important;
+}
+
+a.page-link:hover {
+	color: #ff9124 !important;
+}
+
+
+
+.question-detail-main {
+	margin-bottom: 45px;
+}
+
+.question-detail {
+	border: 1px solid #E8E8E8;
+	clear: both;
+	margin: 0 0 20px;
+	padding: 10px;
+	text-align: justify;
+	background-color: #fff;
+}
+
+h1.question-detail-title {
+	color: #333;
+	font-weight: bold;
+	font-size: 21px;
+	margin-bottom: 20px;
+}
+
+.question-detail-content {
+	margin: 0 0 25px;
+	text-align: justify;
+	color: #333;
+	font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 1.5625;
+}
+
+.answer-detail-content {
+	background-color: #EEF7FD;
+	margin: 10px 0;
+	padding: 10px;
+	overflow: hidden;
+	color: #333;
+	font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 1.5625;
+	padding-bottom: 30px;
+}
+
+.answer-detail-title {
+	margin: 0 0 15px;
+	text-align: justify;
+	color: #87A62F;
+	font-weight: 700;
+	font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+	font-size: 14px;
+}
+
 @media screen and (max-width: 768px) {
 	.responsive-768 {
 		display: block;

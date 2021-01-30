@@ -1124,7 +1124,7 @@ abstract class WC_Abstract_Order extends WC_Abstract_Legacy_Order {
 		$applied_coupons = $this->get_items( 'coupon' );
 		foreach ( $applied_coupons as $applied_coupon ) {
 			if ( $applied_coupon->get_code() === $coupon->get_code() ) {
-				return new WP_Error( 'invalid_coupon', __( 'Coupon code already applied!', 'woocommerce' ) );
+				return new WP_Error( 'invalid_coupon', __( 'Mã giảm giá đã được áp dụng', 'woocommerce' ) );
 			}
 		}
 
@@ -2000,7 +2000,7 @@ abstract class WC_Abstract_Order extends WC_Abstract_Legacy_Order {
 
 		if ( $subtotal ) {
 			$total_rows['cart_subtotal'] = array(
-				'label' => __( 'Subtotal:', 'woocommerce' ),
+				'label' => __( 'Tạm tính:', 'woocommerce' ),
 				'value' => $subtotal,
 			);
 		}

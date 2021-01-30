@@ -611,10 +611,10 @@ class WC_Admin_Post_Types {
 	public function enter_title_here( $text, $post ) {
 		switch ( $post->post_type ) {
 			case 'product':
-				$text = esc_html__( 'Product name', 'woocommerce' );
+				$text = esc_html__( 'Tên sản phầm', 'woocommerce' );
 				break;
 			case 'shop_coupon':
-				$text = esc_html__( 'Coupon code', 'woocommerce' );
+				$text = esc_html__( 'Mã giảm giá', 'woocommerce' );
 				break;
 		}
 		return $text;

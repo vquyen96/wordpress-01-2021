@@ -1,6 +1,7 @@
 <?php get_header();
 
 global $wpdb;
+$count = 10;
 
 
 $hunmendCustoms =  $wpdb->get_results(  $wpdb->prepare("SELECT * FROM $wpdb->hunmend_customs WHERE status = %d ORDER BY sort ASC", 1));
@@ -89,9 +90,19 @@ $cat_args = array(
 
 $product_categories = get_terms( 'product_cat', $cat_args );
 
-$questions =  $wpdb->get_results("SELECT * FROM $wpdb->hunmend_questions WHERE answer != '' ORDER BY id DESC LIMIT 10");
-$videoList =  $wpdb->get_results("SELECT * FROM $wpdb->hunmend_videos ORDER BY id DESC LIMIT 10");
+$videoCount =  $wpdb->get_results("SELECT COUNT(*) FROM $wpdb->hunmend_videos");
+$total = json_decode(json_encode($videoCount[0]), true)['COUNT(*)'];
+$lastPage = floor($total/$count);
+$paged = (isset($_GET['paged'])) ? $_GET['paged'] : 1;
+$pageName = (isset($_GET['page'])) ? $_GET['page'] : '';
+$offset = ($paged-1) * $count;
+
+$questions =  $wpdb->get_results("SELECT * FROM $wpdb->hunmend_questions WHERE answer != '' ORDER BY id DESC LIMIT $count OFFSET $offset");
+$videoList =  $wpdb->get_results("SELECT * FROM $wpdb->hunmend_videos ORDER BY id DESC LIMIT $count OFFSET $offset ");
 $videoIds = [];
+
+
+
 foreach ($videoList as $video) {
     $videoIds[] = $video->post_id;
 }
@@ -120,12 +131,23 @@ if (isset($_POST['do'])) {
         );
 
 }
+
+if ($pageName == 'question') {
+    $questionId = (isset($_GET['id'])) ? $_GET['id'] : 0;
+    if ($questionId == 0) {}
+
+    $question =  $wpdb->get_row(  $wpdb->prepare("SELECT * FROM $wpdb->hunmend_questions WHERE id = %d", $questionId));
+
+
+}
+
+
 ?>
 
 <div class="container home-content">
     <div class="row">
         <div class="col-sm-8 home-content-left">
-            <?php if (isset($_GET['page']) && $_GET['page'] == 'contact') { ?>
+            <?php if ($pageName == 'contact') { ?>
                 <?php echo $hunmendData['CONTACT_CONTENT']?>
                 <form action="" method="post" enctype="multipart/form-data">
                     <div class="form-group mb-2">
@@ -163,13 +185,81 @@ if (isset($_POST['do'])) {
                             <img src="https://img.icons8.com/cotton/2x/doctor-skin-type-1.png" alt="" class="question-main-img">
                             <div class="question-main-answer">
                                 <?php echo cut_string($question->answer, 250) ?>
-                                <a href="#">Xem thêm</a>
+                                <a href="<?php echo esc_url( home_url( '/' )) ?>?page=question&id=<?php echo $question->id?>">Xem thêm</a>
                             </div>
                         </div>
                     </div>
                     <?php } ?>
                 </div>
-            <?php } else if (isset($_GET['page']) && $_GET['page'] == 'video') {?>
+            <?php } else if ($pageName == 'question') {?>
+                <div class="question-detail">
+                    <div class="question-detail-main">
+                        <h1 class="question-detail-title">
+                            <?php echo $question->question_title?>
+                        </h1>
+                        <div class="question-detail-content">
+                            <?php echo $question->question_content?>
+                        </div>
+                        <div class="answer-detail-title">
+                            Trả lời
+                        </div>
+                        <div class="answer-detail-content">
+                            <?php echo $question->answer ?>
+                        </div>
+                    </div>
+                    <div class="post-content-relate">
+                        <div class="post-content-relate-title">
+                            Bài viết liên quan
+                        </div>
+                        <div class="post-content-relate-main">
+                            <ul>
+                                <li>
+                                    <a href="#" class="post-content-relate-item">Chuẩn bị mang thai – Những điều cần biết!</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="post-content-relate-item">Chuẩn bị mang thai – Những điều cần biết!</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="post-content-relate-item">Chuẩn bị mang thai – Những điều cần biết!</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="post-content-relate-item">Chuẩn bị mang thai – Những điều cần biết!</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="post-content-relate-item">Chuẩn bị mang thai – Những điều cần biết!</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+<!--                    <div class="post-content-line"></div>-->
+<!--                        <div class="post-content-share">-->
+<!--                            <div class="post-content-share-title">-->
+<!--                                Chia sẻ của mẹ bầu-->
+<!--                            </div>-->
+<!--                            <div class="post-content-share-main">-->
+<!--                                <ul>-->
+<!--                                    <li>-->
+<!--                                        <a href="#" class="post-content-share-item">Dành cho những bà mẹ đang chuẩn bị mang thai và mang thai</a>-->
+<!--                                    </li>-->
+<!--                                    <li>-->
+<!--                                        <a href="#" class="post-content-share-item">Nhật ký viết cho bé Miu và bé Heo con của mẹ</a>-->
+<!--                                    </li>-->
+<!--                                    <li>-->
+<!--                                        <a href="#" class="post-content-share-item">Dành cho những bà mẹ đang chuẩn bị mang thai và mang thai</a>-->
+<!--                                    </li>-->
+<!--                                    <li>-->
+<!--                                        <a href="#" class="post-content-share-item">Nhật ký viết cho bé Miu và bé Heo con của mẹ</a>-->
+<!--                                    </li>-->
+<!--                                    <li>-->
+<!--                                        <a href="#" class="post-content-share-item">Dành cho những bà mẹ đang chuẩn bị mang thai và mang thai</a>-->
+<!--                                    </li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+                </div>
+
+            <?php } else if ($pageName == 'video') {?>
                 <div class="">
                     <h1 class="list-cate-left-title">
                         Video tư vấn
@@ -205,6 +295,9 @@ if (isset($_POST['do'])) {
                             </div>
                         </div>
                     <?php } ?>
+                    <?php
+                        paginate($lastPage, $paged, esc_url( home_url( '/' )).'?'.'page=video')
+                    ?>
                 </div>
 
             <?php } else {?>
