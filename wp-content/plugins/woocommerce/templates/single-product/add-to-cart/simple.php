@@ -46,7 +46,10 @@ if ( $product->is_in_stock() ) : ?>
 		do_action( 'woocommerce_after_add_to_cart_quantity' );
 		?>
 
-		<button type="submit" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>" class="single_add_to_cart_button button alt">Thêm vào giỏ hàng</button>
+        <input type="hidden" name="product-id" value="<?php echo esc_attr( $product->get_id() ); ?>">
+		<button type="submit" name="add-to-cart" value="true" class="single_add_to_cart_button button alt" style="margin-bottom: 10px">Thêm vào giỏ hàng</button>
+
+		<button type="submit" name="add-to-cart" value="buy-now" class="single_add_to_cart_button button alt">Mua ngay</button>
 
 		<?php do_action( 'woocommerce_after_add_to_cart_button' ); ?>
 	</form>

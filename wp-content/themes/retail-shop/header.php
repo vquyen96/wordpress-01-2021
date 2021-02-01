@@ -158,7 +158,9 @@ $bannerMainMobie =  $wpdb->get_results( "SELECT * FROM $wpdb->hunmend_banners WH
             <li><a href="<?php echo esc_url( home_url( '/' )) ?>?page=video">Video tư vấn</a></li>
         </ul>
         <div class="btn-menu-mobie-hide">
-            <span class="dashicons dashicons-menu"></span>
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
     </nav>
     <div class="container focal-bg">
@@ -181,13 +183,23 @@ $bannerMainMobie =  $wpdb->get_results( "SELECT * FROM $wpdb->hunmend_banners WH
                         </ul>
                     </div>
                     <div class="btn-menu-mobie">
-                        <span class="dashicons dashicons-menu"></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
+    <div class="header-search-mobie">
+        <div class="content-right-search">
+            <form class="content-right-form" action="<?php echo esc_url( home_url( '/' )) ?>" method="get">
+                <label class="screen-reader-text">Tìm kiếmr</label>
+                <input type="search" name="s" id="" value="" placeholder="Bạn tìm kiếm gì ...">
+                <button type="submit"><span class="fa icon fa-search"></span></button>
+            </form>
+        </div>
+    </div>
     <div class="banner-header-bg">
         <div class="banner-header owl-carousel owl-theme">
             <?php foreach ($bannerMain as $banner) { ?>

@@ -115,14 +115,14 @@ function wc_add_to_cart_message( $products, $show_qty = false, $return = false )
 
 	$titles = array_filter( $titles );
 	/* translators: %s: product name */
-	$added_text = sprintf( _n( '%s has been added to your cart.', '%s have been added to your cart.', $count, 'woocommerce' ), wc_format_list_of_items( $titles ) );
+	$added_text = sprintf( _n( '%s đã được thêm vào giỏ hàng của bạn.', '%s have been added to your cart.', $count, 'woocommerce' ), wc_format_list_of_items( $titles ) );
 
 	// Output success messages.
 	if ( 'yes' === get_option( 'woocommerce_cart_redirect_after_add' ) ) {
 		$return_to = apply_filters( 'woocommerce_continue_shopping_redirect', wc_get_raw_referer() ? wp_validate_redirect( wc_get_raw_referer(), false ) : wc_get_page_permalink( 'shop' ) );
-		$message   = sprintf( '<a href="%s" tabindex="1" class="button wc-forward">%s</a> %s', esc_url( $return_to ), esc_html__( 'Continue shopping', 'woocommerce' ), esc_html( $added_text ) );
+		$message   = sprintf( '<a href="%s" tabindex="1" class="button wc-forward">%s</a> %s', esc_url( $return_to ), esc_html__( 'Tiếp tục mua sắm', 'woocommerce' ), esc_html( $added_text ) );
 	} else {
-		$message = sprintf( '<a href="%s" tabindex="1" class="button wc-forward">%s</a> %s', esc_url( wc_get_cart_url() ), esc_html__( 'View cart', 'woocommerce' ), esc_html( $added_text ) );
+		$message = sprintf( '<a href="%s" tabindex="1" class="button wc-forward">%s</a> %s', esc_url( wc_get_cart_url() ), esc_html__( 'Xem giỏ hàng', 'woocommerce' ), esc_html( $added_text ) );
 	}
 
 	if ( has_filter( 'wc_add_to_cart_message' ) ) {
