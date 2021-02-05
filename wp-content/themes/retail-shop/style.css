@@ -1486,6 +1486,10 @@ input#submit {
 	background: #ff9124 !important;
 }
 
+#btn-buy-now {
+	background: #003d70 !important;
+}
+
 
 @media screen and (max-width: 768px) {
 	.responsive-768 {
