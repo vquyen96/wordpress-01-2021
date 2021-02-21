@@ -83,7 +83,7 @@ if (count($hunmendCustoms) != 0) {
                     echo $content;
                     ?>
                     <div class="footer-item">
-                        <div class="fb-page" data-href="https://www.facebook.com/nhungcaunoibathu/" data-tabs="" data-width="" data-height="200px" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/nhungcaunoibathu/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/nhungcaunoibathu/">Những Câu Nói Bất Hủ</a></blockquote></div>
+                        <div class="fb-page" data-href="<?php echo $hunmendData['FB_PAGE']?>" data-tabs="" data-width="" data-height="200px" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="<?php echo $hunmendData['FB_PAGE']?>" class="fb-xfbml-parse-ignore"><a href="<?php echo $hunmendData['FB_PAGE']?>">Facebook page</a></blockquote></div>
                     </div>
                 </div>
             </div>

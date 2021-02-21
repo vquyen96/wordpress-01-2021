@@ -937,10 +937,10 @@ class WC_Coupon extends WC_Legacy_Coupon {
 	public function get_coupon_message( $msg_code ) {
 		switch ( $msg_code ) {
 			case self::WC_COUPON_SUCCESS:
-				$msg = __( 'Coupon code applied successfully.', 'woocommerce' );
+				$msg = __( 'Áp dụng mã giảm giá thành công', 'woocommerce' );
 				break;
 			case self::WC_COUPON_REMOVED:
-				$msg = __( 'Coupon code removed successfully.', 'woocommerce' );
+				$msg = __( 'Xóa bỏ mã giảm giá thành công', 'woocommerce' );
 				break;
 			default:
 				$msg = '';
@@ -973,7 +973,7 @@ class WC_Coupon extends WC_Legacy_Coupon {
 				$err = sprintf( __( 'Sorry, it seems the coupon "%s" is not yours - it has now been removed from your order.', 'woocommerce' ), esc_html( $this->get_code() ) );
 				break;
 			case self::E_WC_COUPON_ALREADY_APPLIED:
-				$err = __( 'Coupon code already applied!', 'woocommerce' );
+				$err = __( 'Mã giảm giá đã được áp dụng', 'woocommerce' );
 				break;
 			case self::E_WC_COUPON_ALREADY_APPLIED_INDIV_USE_ONLY:
 				/* translators: %s: coupon code */

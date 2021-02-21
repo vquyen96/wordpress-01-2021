@@ -968,17 +968,17 @@ if ( ! function_exists( 'woocommerce_content' ) ) {
 		} else {
 			?>
 
-			<?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
+<!--			--><?php //if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
+<!---->
+<!--				<h1 class="page-title">--><?php //woocommerce_page_title(); ?><!--</h1>-->
+<!---->
+<!--			--><?php //endif; ?>
 
-				<h1 class="page-title"><?php woocommerce_page_title(); ?></h1>
-
-			<?php endif; ?>
-
-			<?php do_action( 'woocommerce_archive_description' ); ?>
+<!--			--><?php //do_action( 'woocommerce_archive_description' ); ?>
 
 			<?php if ( woocommerce_product_loop() ) : ?>
 
-				<?php do_action( 'woocommerce_before_shop_loop' ); ?>
+<!--				--><?php //do_action( 'woocommerce_before_shop_loop' ); ?>
 
 				<?php woocommerce_product_loop_start(); ?>
 
@@ -2119,7 +2119,7 @@ if ( ! function_exists( 'woocommerce_widget_shopping_cart_button_view_cart' ) ) 
 	 * Output the view cart button.
 	 */
 	function woocommerce_widget_shopping_cart_button_view_cart() {
-		echo '<a href="' . esc_url( wc_get_cart_url() ) . '" class="button wc-forward">' . esc_html__( 'View cart', 'woocommerce' ) . '</a>';
+		echo '<a href="' . esc_url( wc_get_cart_url() ) . '" class="button wc-forward">' . esc_html__( 'Xem giỏ hàng', 'woocommerce' ) . '</a>';
 	}
 }
 
@@ -2129,7 +2129,7 @@ if ( ! function_exists( 'woocommerce_widget_shopping_cart_proceed_to_checkout' )
 	 * Output the proceed to checkout button.
 	 */
 	function woocommerce_widget_shopping_cart_proceed_to_checkout() {
-		echo '<a href="' . esc_url( wc_get_checkout_url() ) . '" class="button checkout wc-forward">' . esc_html__( 'Checkout', 'woocommerce' ) . '</a>';
+		echo '<a href="' . esc_url( wc_get_checkout_url() ) . '" class="button checkout wc-forward">' . esc_html__( 'Thanh toán', 'woocommerce' ) . '</a>';
 	}
 }
 
@@ -2140,7 +2140,7 @@ if ( ! function_exists( 'woocommerce_widget_shopping_cart_subtotal' ) ) {
 	 * @since 3.7.0
 	 */
 	function woocommerce_widget_shopping_cart_subtotal() {
-		echo '<strong>' . esc_html__( 'Subtotal:', 'woocommerce' ) . '</strong> ' . WC()->cart->get_cart_subtotal(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo '<strong>' . esc_html__( 'Tạm tính:', 'woocommerce' ) . '</strong> ' . WC()->cart->get_cart_subtotal(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 }
 

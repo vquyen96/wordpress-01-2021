@@ -1147,7 +1147,7 @@ class WC_Cart extends WC_Legacy_Cart {
 					 */
 					$message = apply_filters( 'woocommerce_cart_product_cannot_add_another_message', $message, $product_data );
 
-					throw new Exception( sprintf( '<a href="%s" class="button wc-forward">%s</a> %s', wc_get_cart_url(), __( 'View cart', 'woocommerce' ), $message ) );
+					throw new Exception( sprintf( '<a href="%s" class="button wc-forward">%s</a> %s', wc_get_cart_url(), __( 'Xem giỏ hàng', 'woocommerce' ), $message ) );
 				}
 			}
 
@@ -1208,9 +1208,9 @@ class WC_Cart extends WC_Legacy_Cart {
 						sprintf(
 							'<a href="%s" class="button wc-forward">%s</a> %s',
 							wc_get_cart_url(),
-							__( 'View cart', 'woocommerce' ),
+							__( 'Xem giỏ hàng', 'woocommerce' ),
 							/* translators: 1: quantity in stock 2: current quantity */
-							sprintf( __( 'You cannot add that amount to the cart &mdash; we have %1$s in stock and you already have %2$s in your cart.', 'woocommerce' ), wc_format_stock_quantity_for_display( $product_data->get_stock_quantity(), $product_data ), wc_format_stock_quantity_for_display( $products_qty_in_cart[ $product_data->get_stock_managed_by_id() ], $product_data ) )
+							sprintf( __( 'Bạn không thể thêm số tiền đó vào giỏ hàng &mdash; chúng tôi có %1$s trong kho và bạn đã có %2$s trong giỏ hàng của mình.', 'woocommerce' ), wc_format_stock_quantity_for_display( $product_data->get_stock_quantity(), $product_data ), wc_format_stock_quantity_for_display( $products_qty_in_cart[ $product_data->get_stock_managed_by_id() ], $product_data ) )
 						)
 					);
 				}

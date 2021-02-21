@@ -1,0 +1,158 @@
+2021-01-29T19:20:13+00:00 CRITICAL Uncaught Error: Cannot use object of type stdClass as array in /var/www/html/wp-content/themes/retail-shop/index.php:97
+Stack trace:
+#0 /var/www/html/wp-includes/template-loader.php(106): include()
+#1 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#2 /var/www/html/index.php(17): require('/var/www/html/w...')
+#3 {main}
+  thrown in /var/www/html/wp-content/themes/retail-shop/index.php on line 97
+
+2021-01-29T19:20:13+00:00 CRITICAL Uncaught Error: Cannot use object of type stdClass as array in /var/www/html/wp-content/themes/retail-shop/index.php:97
+Stack trace:
+#0 /var/www/html/wp-includes/template-loader.php(106): include()
+#1 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#2 /var/www/html/index.php(17): require('/var/www/html/w...')
+#3 {main}
+  thrown in /var/www/html/wp-content/themes/retail-shop/index.php on line 97
+
+2021-01-29T19:20:35+00:00 CRITICAL syntax error, unexpected '[', expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$' in /var/www/html/wp-content/themes/retail-shop/index.php on line 97
+
+2021-01-29T19:20:35+00:00 CRITICAL syntax error, unexpected '[', expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$' in /var/www/html/wp-content/themes/retail-shop/index.php on line 97
+
+2021-01-29T19:20:45+00:00 CRITICAL syntax error, unexpected '[', expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$' in /var/www/html/wp-content/themes/retail-shop/index.php on line 97
+
+2021-01-29T19:20:45+00:00 CRITICAL Uncaught Error: Cannot use object of type stdClass as array in /var/www/html/wp-content/themes/retail-shop/index.php:97
+Stack trace:
+#0 /var/www/html/wp-includes/template-loader.php(106): include()
+#1 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#2 /var/www/html/index.php(17): require('/var/www/html/w...')
+#3 {main}
+  thrown in /var/www/html/wp-content/themes/retail-shop/index.php on line 97
+
+2021-01-29T19:20:50+00:00 CRITICAL Uncaught Error: Cannot use object of type stdClass as array in /var/www/html/wp-content/themes/retail-shop/index.php:97
+Stack trace:
+#0 /var/www/html/wp-includes/template-loader.php(106): include()
+#1 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#2 /var/www/html/index.php(17): require('/var/www/html/w...')
+#3 {main}
+  thrown in /var/www/html/wp-content/themes/retail-shop/index.php on line 97
+
+2021-01-29T19:20:50+00:00 CRITICAL Uncaught Error: Cannot use object of type stdClass as array in /var/www/html/wp-content/themes/retail-shop/index.php:97
+Stack trace:
+#0 /var/www/html/wp-includes/template-loader.php(106): include()
+#1 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#2 /var/www/html/index.php(17): require('/var/www/html/w...')
+#3 {main}
+  thrown in /var/www/html/wp-content/themes/retail-shop/index.php on line 97
+
+2021-01-29T19:20:50+00:00 CRITICAL Uncaught Error: Cannot use object of type stdClass as array in /var/www/html/wp-content/themes/retail-shop/index.php:97
+Stack trace:
+#0 /var/www/html/wp-includes/template-loader.php(106): include()
+#1 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#2 /var/www/html/index.php(17): require('/var/www/html/w...')
+#3 {main}
+  thrown in /var/www/html/wp-content/themes/retail-shop/index.php on line 97
+
+2021-01-29T19:20:51+00:00 CRITICAL Uncaught Error: Cannot use object of type stdClass as array in /var/www/html/wp-content/themes/retail-shop/index.php:97
+Stack trace:
+#0 /var/www/html/wp-includes/template-loader.php(106): include()
+#1 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#2 /var/www/html/index.php(17): require('/var/www/html/w...')
+#3 {main}
+  thrown in /var/www/html/wp-content/themes/retail-shop/index.php on line 97
+
+2021-01-29T19:21:05+00:00 CRITICAL Uncaught Error: Cannot use object of type stdClass as array in /var/www/html/wp-content/themes/retail-shop/index.php:97
+Stack trace:
+#0 /var/www/html/wp-includes/template-loader.php(106): include()
+#1 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#2 /var/www/html/index.php(17): require('/var/www/html/w...')
+#3 {main}
+  thrown in /var/www/html/wp-content/themes/retail-shop/index.php on line 97
+
+2021-01-29T19:21:06+00:00 CRITICAL Uncaught Error: Cannot use object of type stdClass as array in /var/www/html/wp-content/themes/retail-shop/index.php:97
+Stack trace:
+#0 /var/www/html/wp-includes/template-loader.php(106): include()
+#1 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#2 /var/www/html/index.php(17): require('/var/www/html/w...')
+#3 {main}
+  thrown in /var/www/html/wp-content/themes/retail-shop/index.php on line 97
+
+2021-01-29T19:21:23+00:00 CRITICAL syntax error, unexpected '[', expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$' in /var/www/html/wp-content/themes/retail-shop/index.php on line 97
+
+2021-01-29T19:21:24+00:00 CRITICAL syntax error, unexpected '[', expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$' in /var/www/html/wp-content/themes/retail-shop/index.php on line 97
+
+2021-01-29T19:22:02+00:00 CRITICAL syntax error, unexpected '[', expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$' in /var/www/html/wp-content/themes/retail-shop/index.php on line 97
+
+2021-01-29T19:22:03+00:00 CRITICAL syntax error, unexpected '[', expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$' in /var/www/html/wp-content/themes/retail-shop/index.php on line 97
+
+2021-01-29T19:23:25+00:00 CRITICAL Uncaught Error: Call to undefined method stdClass::COUNT() in /var/www/html/wp-content/themes/retail-shop/index.php:97
+Stack trace:
+#0 /var/www/html/wp-includes/template-loader.php(106): include()
+#1 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#2 /var/www/html/index.php(17): require('/var/www/html/w...')
+#3 {main}
+  thrown in /var/www/html/wp-content/themes/retail-shop/index.php on line 97
+
+2021-01-29T19:23:27+00:00 CRITICAL Uncaught Error: Call to undefined method stdClass::COUNT() in /var/www/html/wp-content/themes/retail-shop/index.php:97
+Stack trace:
+#0 /var/www/html/wp-includes/template-loader.php(106): include()
+#1 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#2 /var/www/html/index.php(17): require('/var/www/html/w...')
+#3 {main}
+  thrown in /var/www/html/wp-content/themes/retail-shop/index.php on line 97
+
+2021-01-29T19:23:27+00:00 CRITICAL Uncaught Error: Call to undefined method stdClass::COUNT() in /var/www/html/wp-content/themes/retail-shop/index.php:97
+Stack trace:
+#0 /var/www/html/wp-includes/template-loader.php(106): include()
+#1 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#2 /var/www/html/index.php(17): require('/var/www/html/w...')
+#3 {main}
+  thrown in /var/www/html/wp-content/themes/retail-shop/index.php on line 97
+
+2021-01-29T19:23:43+00:00 CRITICAL Uncaught Error: Call to undefined method stdClass::COUNT() in /var/www/html/wp-content/themes/retail-shop/index.php:97
+Stack trace:
+#0 /var/www/html/wp-includes/template-loader.php(106): include()
+#1 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#2 /var/www/html/index.php(17): require('/var/www/html/w...')
+#3 {main}
+  thrown in /var/www/html/wp-content/themes/retail-shop/index.php on line 97
+
+2021-01-29T19:23:49+00:00 CRITICAL syntax error, unexpected ';', expecting ')' in /var/www/html/wp-content/themes/retail-shop/index.php on line 97
+
+2021-01-29T19:23:55+00:00 CRITICAL syntax error, unexpected ';', expecting ')' in /var/www/html/wp-content/themes/retail-shop/index.php on line 97
+
+2021-01-29T19:23:55+00:00 CRITICAL syntax error, unexpected ';', expecting ')' in /var/www/html/wp-content/themes/retail-shop/index.php on line 97
+
+2021-01-29T19:25:56+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in /var/www/html/wp-content/themes/retail-shop/functions.php on line 365
+
+2021-01-29T19:27:16+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in /var/www/html/wp-content/themes/retail-shop/functions.php on line 364
+
+2021-01-29T19:27:25+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in /var/www/html/wp-content/themes/retail-shop/functions.php on line 365
+
+2021-01-29T19:28:10+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in /var/www/html/wp-content/themes/retail-shop/functions.php on line 364
+
+2021-01-29T19:28:17+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in /var/www/html/wp-content/themes/retail-shop/functions.php on line 365
+
+2021-01-29T19:28:18+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in /var/www/html/wp-content/themes/retail-shop/functions.php on line 365
+
+2021-01-29T19:28:18+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in /var/www/html/wp-content/themes/retail-shop/functions.php on line 365
+
+2021-01-29T19:28:18+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in /var/www/html/wp-content/themes/retail-shop/functions.php on line 365
+
+2021-01-29T19:28:19+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in /var/www/html/wp-content/themes/retail-shop/functions.php on line 365
+
+2021-01-29T19:28:31+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in /var/www/html/wp-content/themes/retail-shop/functions.php on line 365
+
+2021-01-29T19:28:47+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in /var/www/html/wp-content/themes/retail-shop/functions.php on line 365
+
+2021-01-29T19:28:59+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in /var/www/html/wp-content/themes/retail-shop/functions.php on line 365
+
+2021-01-29T19:29:00+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in /var/www/html/wp-content/themes/retail-shop/functions.php on line 365
+
+2021-01-29T19:29:05+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in /var/www/html/wp-content/themes/retail-shop/functions.php on line 365
+
+2021-01-29T19:34:14+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in /var/www/html/wp-content/themes/retail-shop/functions.php on line 365
+
+2021-01-29T19:54:26+00:00 CRITICAL syntax error, unexpected ')' in /var/www/html/wp-content/themes/retail-shop/index.php on line 136
+
+2021-01-29T19:54:27+00:00 CRITICAL syntax error, unexpected ')' in /var/www/html/wp-content/themes/retail-shop/index.php on line 136
+

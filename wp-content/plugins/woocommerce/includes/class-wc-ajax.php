@@ -399,7 +399,7 @@ class WC_AJAX {
 	public static function add_to_cart() {
 		ob_start();
 
-		// phpcs:disable WordPress.Security.NonceVerification.Missing
+        // phpcs:disable WordPress.Security.NonceVerification.Missing
 		if ( ! isset( $_POST['product_id'] ) ) {
 			return;
 		}

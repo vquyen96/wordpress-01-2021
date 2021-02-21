@@ -353,6 +353,30 @@ function cut_string($text, $length)
     return $text;
 }
 
+function paginate($lastPage, $currentPage, $url) {
+    $content = '';
+    if ($lastPage > 1) {
+        $content = '<nav class="pagination-bg">';
+        $content    .= '<ul class="pagination">';
+        $content        .= '<li class="page-item ' . ($currentPage == 1 ? "disabled" : "") . '">';
+        $content            .= '<a class="page-link" href="' . $url . '&paged=1"><<</a>';
+        $content        .= '</li>';
+        for ($i = 1; $i <= $lastPage; $i++) {
+            if ($i >= ($currentPage-2) && $i <= ($currentPage+2)) {
+                $content.= '<li class="page-item ' . ($currentPage == $i ? "disabled" : "") . '">';
+                $content    .= '<a class="page-link" href="' . $url . '&paged='. $i .'">'. $i .'</a>';
+                $content.= '</li>';
+            }
+        }
+        $content        .= '<li class="page-item ' . ($currentPage == $lastPage ? "disabled" : "") . '">';
+        $content            .= '<a class="page-link" href="' . $url . '&paged='. $lastPage .'">>></a>';
+        $content        .= '</li>';
+        $content    .= '</ul>';
+        $content .= '</nav>';
+    }
+    echo $content;
+}
+
 
 add_action( 'init', 'wpse26388_rewrites_init' );
 function wpse26388_rewrites_init(){

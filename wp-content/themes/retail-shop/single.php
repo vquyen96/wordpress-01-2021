@@ -31,16 +31,16 @@ $categories = get_the_terms( $post->id, 'category' );
                     <div class="post-content-content">
                         <?php echo $_post->post_content ?>
                     </div>
-<!--                    <span class="share-item">-->
-<!--                        <img src="http://bscedu.vn/public/assets/client/images/fb-logo.png"-->
-<!---->
-<!--                             alt="Share on Facebook"-->
-<!--                             onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent('--><?php //echo get_permalink($_post->ID);?>//'),
-//                                     'facebook-share-dialog','width=626,height=436');
-//                                     return false;"
-//                        >
-//                    </span>
-//                    <iframe src="https://www.facebook.com/plugins/comment_embed.php?href=https%3A%2F%2Fidfnwvjv.nethost-1511.000nethost.com%2F%3Fp%3D56&width=560&include_parent=false&appId=196414931235563&height=0" width="560" height="0" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                    <span class="share-item">
+                        <img src="http://bscedu.vn/public/assets/client/images/fb-logo.png"
+
+                             alt="Share on Facebook"
+                             onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent('<?php echo get_permalink($_post->ID);?>//'),
+                                     'facebook-share-dialog','width=626,height=436');
+                                     return false;"
+                        >
+                    </span>
+                    <iframe src="https://www.facebook.com/plugins/comment_embed.php?href=https%3A%2F%2Fidfnwvjv.nethost-1511.000nethost.com%2F%3Fp%3D56&width=560&include_parent=false&appId=196414931235563&height=0" width="560" height="0" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
 
                     <!-- Load Facebook SDK for JavaScript -->
                     <div id="fb-root"></div>
