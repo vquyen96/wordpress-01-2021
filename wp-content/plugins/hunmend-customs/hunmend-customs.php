@@ -24,6 +24,7 @@ function hunmend_menu() {
     add_submenu_page( 'hunmend-customs/setting.php', __( 'Setting', 'hunmend-customs'), __( 'Setting', 'hunmend-customs' ), 'hunmend-customs', 'hunmend-customs/setting.php' );
     add_submenu_page( 'hunmend-customs/setting.php', __( 'Banner', 'hunmend-customs'), __( 'Banner', 'hunmend-customs' ), 'hunmend-customs', 'hunmend-customs/banner.php' );
     add_submenu_page( 'hunmend-customs/setting.php', __( 'Question', 'hunmend-customs'), __( 'Question', 'hunmend-customs' ), 'hunmend-customs', 'hunmend-customs/question.php' );
+    add_submenu_page( 'hunmend-customs/setting.php', __( 'Tag', 'hunmend-customs'), __( 'Tag', 'hunmend-customs' ), 'hunmend-customs', 'hunmend-customs/tag.php' );
     add_submenu_page( '', __( 'Question Detail', 'hunmend-customs' ), __( 'Question Detail', 'hunmend-customs' ), 'hunmend-customs', 'hunmend-customs/question-detail.php' );
 }
 
