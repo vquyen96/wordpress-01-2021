@@ -572,6 +572,29 @@ a.home-top-big-title {
 	flex: 1;
 }
 
+.tag-image {
+	width: 30%;
+	margin-right: 15px;
+}
+
+
+a.tag-item {
+	background: #fd9024;
+	display: inline-block;
+	padding: 8px 15px;
+	border-radius: 25px;
+	margin-bottom: 10px;
+	color: #fff;
+	margin-right: 6px;
+}
+
+a.tag-item:hover {
+	color: #fd9024;
+	background: #fff;
+	-webkit-box-shadow: 1px 1px 11px 1px #fd9024;
+	box-shadow: 1px 1px 11px 1px #fd9024;
+}
+
 a.home-top-small-img {
 	display: block;
 	width: 50%;

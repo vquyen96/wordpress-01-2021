@@ -5,118 +5,87 @@ if(!current_user_can('hunmend-customs')) {
     die('Access Denied');
 }
 global $wpdb;
+$dataName = "TAG";
 
 
-$dataType = [
-    'PHONE'         => 'single',
-    'FB_PAGE'       => 'single',
-    'CONTACT_CONTENT' => 'single',
-    'NAV_HEADER'    => 'list',
-    'FEATURE'       => 'list',
-    'POST_TOP'      => 'list',
-    'CATE_HOME'     => 'list',
-];
 if ( ! empty($_POST) ) {
-    foreach ($dataType as $dataName => $dataType) {
-        if ($dataType == 'single') {
-            if (isset($_POST[$dataName])) {
-                $setting = $wpdb->get_row(  $wpdb->prepare("SELECT * FROM $wpdb->hunmend_customs WHERE name = %s", $dataName));
-                $updated_at = current_time( 'timestamp' );
-                $dataUpdate = [
-                    'name'              => $dataName,
-                    'value'             => $_POST[$dataName],
-                    'updated_at'        => $updated_at,
-                ];
-                $dataUpdateType = [
-                    '%s',
-                    '%s',
-                    '%d'
-                ];
-
-                $update_setting = $wpdb->update(
-                    $wpdb->hunmend_customs,
-                    $dataUpdate,
-                    array(
-                        'id' => $setting->id
-                    ),
-                    $dataUpdateType,
-                    array(
-                        '%d'
-                    )
-                );
-            }
-        }
-
-        if ($dataType == 'list') {
-            $settings = $wpdb->get_results(  $wpdb->prepare("SELECT * FROM $wpdb->hunmend_customs WHERE name = %s", $dataName));
-            for($i = 0; $i < count($settings); $i++) {
-                $updated_at = current_time( 'timestamp' );
-                $dataUpdate = [
-                    'name'              => $dataName,
-                    'value'             => $_POST[$dataName][$i],
-                    'sort'              => ($i+1),
-                    'updated_at'        => $updated_at,
-                ];
-                $dataUpdateType = [
-                    '%s',
-                    '%s',
-                    '%d',
-                    '%d',
-                ];
-
-                $update_setting = $wpdb->update(
-                    $wpdb->hunmend_customs,
-                    $dataUpdate,
-                    array(
-                        'id' => $settings[$i]->id
-                    ),
-                    $dataUpdateType,
-                    array(
-                        '%d'
-                    )
-                );
-            }
-        }
-
+    $tagIndex = 0;
+    $tagValue = [];
+    $tagSort = [];
+    while (isset($_POST['tag-'.$tagIndex])) {
+        $tagValue[] = $_POST['tag-'.$tagIndex];
+        $tagSort[$_POST['tag-'.$tagIndex]['title']] = $_POST['tag-'.$tagIndex]['sort'];
+        $tagIndex++;
     }
+
+    asort($tagSort);
+    $tagIndexNew = 1;
+    $tagValueSorted = [];
+    $tagValueIndexAdded = [];
+    foreach ($tagSort as $tagTitle => $tagItemSort){
+        foreach($tagValue as $tagValueIndex => $tagValueItem) {
+            if ($tagValueItem['title'] == $tagTitle && !in_array($tagValueIndex, $tagValueIndexAdded)) {
+                $tagValueItem['sort'] = $tagIndexNew;
+                $tagValueSorted[] = $tagValueItem;
+                $tagValueIndexAdded[] = $tagValueIndex;
+            }
+        }
+        $tagIndexNew++;
+    }
+
+    $tagValueSortedString = json_encode($tagValueSorted, true);
+
+    $settingTag = $wpdb->get_row(  $wpdb->prepare("SELECT * FROM $wpdb->hunmend_customs WHERE name = %s", $dataName));
+    $updated_at = current_time( 'timestamp' );
+    $dataUpdate = [
+        'name'              => $dataName,
+        'value'             => $tagValueSortedString,
+        'updated_at'        => $updated_at,
+    ];
+    $dataUpdateType = [
+        '%s',
+        '%s',
+        '%d'
+    ];
+
+    $update_setting = $wpdb->update(
+        $wpdb->hunmend_customs,
+        $dataUpdate,
+        array(
+            'id' => $settingTag->id
+        ),
+        $dataUpdateType,
+        array(
+            '%d'
+        )
+    );
 }
 
 
-$hunmendCustoms =  $wpdb->get_results(  $wpdb->prepare("SELECT * FROM $wpdb->hunmend_customs WHERE status = %d ORDER BY sort ASC", 1));
-$hunmendData = [];
-$listIsArray = ['NAV_HEADER', 'POST_TOP', 'FEATURE', 'CATE_HOME'];
-if (count($hunmendCustoms) != 0) {
-    foreach ($hunmendCustoms as $hunmend) {
-        if (in_array($hunmend->name, $listIsArray)) {
-            $hunmendData[$hunmend->name][] = $hunmend->value;
-        } else {
-            $hunmendData[$hunmend->name] = $hunmend->value;
-        }
-    }
+$hunmendTags =  $wpdb->get_results(  $wpdb->prepare("SELECT * FROM $wpdb->hunmend_customs WHERE name = %s LIMIT 1", "TAG"));
+
+if ($hunmendTags == null || count($hunmendTags) == 0) {
+    $valueTag = [
+        [
+            "title" => "example",
+            "url" => "http://google.com",
+            "sort" => 1
+        ],
+        [
+            "title" => "example",
+            "url" => "http://google.com",
+            "sort" => 2
+        ]
+    ];
+    $valueTagString = json_encode($valueTag);
+    $wpdb->insert($wpdb->hunmend_customs, array('name' => __('TAG', 'hunmend-customs'), 'value' => $valueTagString, 'status' => 1), array('%s', '%s', '%d'));
+
+    $hunmendTags =  $wpdb->get_results(  $wpdb->prepare("SELECT * FROM $wpdb->hunmend_customs WHERE name = %s", "TAG"));
 }
 
-$catHeaders = get_categories([
-    'taxonomy' => 'category',
-    'orderby' => 'term_id',
-    'order' => 'ASC',
-    'parent' => 0
-]);
-$catFeatures = get_categories([
-    'taxonomy' => 'category',
-    'orderby' => 'term_id',
-    'order' => 'ASC',
-]);
 
-
-$args = [
-    'numberposts'      => 50,
-    'orderby'          => 'post_date',
-    'order'            => 'DESC',
-    'post_type'        => 'post',
-];
-$list_post_top = get_posts($args);
-
-
+$valueTagString = $hunmendTags[0]->value;
+$valueTags = json_decode($valueTagString, true);
 
 ?>
 
@@ -124,106 +93,93 @@ $list_post_top = get_posts($args);
 <form method="post"  enctype="multipart/form-data">
     <?php wp_nonce_field('wp-polls_add-poll'); ?>
     <div class="wrap">
-        <h2><?php _e('Cài đặt hệ thống', 'hunmend-customs') ; ?></h2>
+        <h2><?php _e('Cài đặt Tag', 'hunmend-customs') ; ?></h2>
         <!-- Poll Question -->
-        <h3><?php _e('Cài đặt chung', 'hunmend-customs'); ?></h3>
-        <table class="form-table">
+        <table class="wp-list-table table-tag">
             <tr>
-                <th width="20%" scope="row" valign="top"><?php _e('Số điện thoại', 'hunmend-customs') ?></th>
-                <td width="80%">
-                    <input type="text" size="70" name="PHONE" value="<?php echo $hunmendData['PHONE']?>" />
+                <th width="20%" scope="row" valign="top">
+                    <?php _e('Tiêu đề', 'hunmend-customs') ; ?>
+                </th>
+                <th width="50%">
+                    <?php _e('URL', 'hunmend-customs') ; ?>
+                </th>
+                <th width="20%">
+                    <?php _e('Thứ tự', 'hunmend-customs') ; ?>
+                </th>
+                <th width="10%">
+                    <?php _e('Thứ tự', 'hunmend-customs') ; ?>
+                </th>
+            </tr>
+            <?php $nextIndex = 1;?>
+            <?php foreach ($valueTags as $index => $tag) { ?>
+            <tr class="table-tag-item">
+                <th width="20%" scope="row" valign="top">
+                    <input type="text" name="tag-<?php echo $index ?>[title]" value="<?php echo $tag['title']?>" style="width: 100%" class='inputTagTitle'/>
+                </th>
+                <td width="50%">
+                    <input type="text" width="100%" name="tag-<?php echo $index ?>[url]" value="<?php echo $tag['url']?>" style="width: 100%" class='inputTagUrl'/>
+                </td>
+                <td width="20%">
+                    <input type="text" name="tag-<?php echo $index ?>[sort]" value="<?php echo $tag['sort']?>" style="width: 100%" class='inputTagSort'/>
+                </td>
+                <td width="10%">
+                    <button class="button del-tag" >
+                        <span class="dashicons dashicons-trash"></span>
+                    </button>
                 </td>
             </tr>
-            <tr>
-                <th width="20%" scope="row" valign="top"><?php _e('Link page Facebook', 'hunmend-customs') ?></th>
-                <td width="80%">
-                    <input type="text" size="70" name="FB_PAGE" value="<?php echo $hunmendData['FB_PAGE']?>" />
-                </td>
-            </tr>
-            <tr>
-                <th width="20%" scope="row" valign="top"><?php _e('Đặt câu hỏi', 'hunmend-customs') ?></th>
-                <td width="80%">
-                    <?php wp_editor($hunmendData['CONTACT_CONTENT'], 'CONTACT_CONTENT', ['editor_height' => 300, 'media_buttons' => FALSE, 'quicktags' => false, 'readonly' => true]) ?>
-                </td>
-            </tr>
+            <?php $nextIndex = $index+1; } ?>
         </table>
-
-        <h3><?php _e('Sắp xếp menu đầu trang', 'hunmend-customs'); ?></h3>
-        <table class="form-table">
-            <?php for ($i = 0; $i < count($hunmendData['NAV_HEADER']); $i++) { ?>
-            <tr>
-                <th width="20%" scope="row" valign="top"><?php _e('Menu thứ '.($i+1), 'hunmend-customs') ?></th>
-                <td width="80%">
-                    <select name="NAV_HEADER[]" id="">
-                        <?php foreach ($catHeaders as $cat) { ?>
-                        <option value="<?php echo $cat->term_id ?>" <?php echo $cat->term_id == $hunmendData['NAV_HEADER'][$i] ? 'selected' : '' ?>><?php echo $cat->name ?></option>
-                        <?php } ?>
-                    </select>
-                </td>
-            </tr>
-            <?php } ?>
-
-        </table>
-
-        <h3><?php _e('Sắp xếp tiêu đề', 'hunmend-customs'); ?></h3>
-        <table class="form-table">
-            <?php for ($i = 0; $i < count($hunmendData['FEATURE']); $i++) { ?>
-                <tr>
-                    <th width="20%" scope="row" valign="top"><?php _e('Tiêu đề thứ '.($i+1), 'hunmend-customs') ?></th>
-                    <td width="80%">
-                        <select name="FEATURE[]" id="">
-                            <?php foreach ($catFeatures as $cat) { ?>
-                                <option value="<?php echo $cat->term_id ?>" <?php echo $cat->term_id == $hunmendData['FEATURE'][$i] ? 'selected' : '' ?>><?php echo $cat->name ?></option>
-                            <?php } ?>
-                        </select>
-                    </td>
-                </tr>
-            <?php } ?>
-
-        </table>
-
-
-        <?php if (isset($hunmendData['POST_TOP'])) { ?>
-            <h3><?php _e('Sắp xếp bài viết hot', 'hunmend-customs'); ?></h3>
-            <table class="form-table">
-                <?php for ($i = 0; $i < count($hunmendData['POST_TOP']); $i++) { ?>
-                    <tr>
-                        <th width="20%" scope="row" valign="top"><?php _e('Tiêu đề thứ '.($i+1), 'hunmend-customs') ?></th>
-                        <td width="80%">
-                            <select name="POST_TOP[]" id="">
-                                <?php foreach ($list_post_top as $post) { ?>
-                                    <option value="<?php echo $post->ID ?>" <?php echo $post->ID == $hunmendData['POST_TOP'][$i] ? 'selected' : '' ?>><?php echo $post->post_title ?></option>
-                                <?php } ?>
-                            </select>
-                        </td>
-                    </tr>
-                <?php } ?>
-            </table>
-        <?php } ?>
-
-
-        <?php if (isset($hunmendData['CATE_HOME'])) { ?>
-            <h3><?php _e('Sắp xếp danh mục nổi bật', 'hunmend-customs'); ?></h3>
-            <table class="form-table">
-                <?php for ($i = 0; $i < count($hunmendData['CATE_HOME']); $i++) { ?>
-                    <tr>
-                        <th width="20%" scope="row" valign="top"><?php _e('Danh mục thứ '.($i+1), 'hunmend-customs') ?></th>
-                        <td width="80%">
-                            <select name="CATE_HOME[]" id="">
-                                <?php foreach ($catFeatures as $cat) { ?>
-                                    <option value="<?php echo $cat->term_id ?>" <?php echo $cat->term_id == $hunmendData['CATE_HOME'][$i] ? 'selected' : '' ?>><?php echo $cat->name ?></option>
-                                <?php } ?>
-                            </select>
-                        </td>
-                    </tr>
-                <?php } ?>
-            </table>
-        <?php } ?>
 
         <p style="text-align: center;">
+            <input type="button" name="do" value="<?php _e('Add New', 'hunmend-customs') ?>"  class="button button-success" id="add_new_tag"/>
+            &nbsp;&nbsp;
             <input type="submit" name="do" value="<?php _e('Update', 'hunmend-customs') ?>"  class="button-primary" />
             &nbsp;&nbsp;
             <input type="button" name="cancel" value="<?php _e('Cancel', 'hunmend-customs'); ?>" class="button" onclick="javascript:history.go(-1)" />
         </p>
     </div>
 </form>
+
+<script>
+    jQuery(document).ready( function () {
+        var nextIndex = <?php echo $nextIndex; ?>;
+        jQuery(document).on("click", "#add_new_tag", function () {
+            var newTag = "<tr class=\"table-tag-item\">\n" +
+                "                <th width=\"20%\" scope=\"row\" valign=\"top\">\n" +
+                "                    <input type=\"text\" name=\"tag-"+nextIndex+"[title]\" value=\"\" style=\"width: 100%\" class='inputTagTitle'/>\n" +
+                "                </th>\n" +
+                "                <td width=\"60%\">\n" +
+                "                    <input type=\"text\" width=\"100%\" name=\"tag-"+nextIndex+"[url]\" value=\"\" style=\"width: 100%\"  class='inputTagUrl'/>\n" +
+                "                </td>\n" +
+                "                <td width=\"20%\">\n" +
+                "                    <input type=\"text\" name=\"tag-"+nextIndex+"[sort]\" value=\"\" style=\"width: 100%\" class='inputTagSort' />\n" +
+                "                </td>\n" +
+                "                <td width=\"10%\">\n" +
+                "                    <button class=\"button del-tag\" >\n" +
+                "                        <span class=\"dashicons dashicons-trash\"></span>\n" +
+                "                    </button>\n" +
+                "                </td>" +
+                "            </tr>";
+            jQuery("table.table-tag").append(newTag);
+            nextIndex+=1;
+            var listTagTable = jQuery('.table-tag-item');
+            for (var i = 0; i < listTagTable.length; i++) {
+                listTagTable.eq(i).find('.inputTagTitle').attr("name", "tag-"+i+"[title]");
+                listTagTable.eq(i).find('.inputTagUrl').attr("name", "tag-"+i+"[url]");
+                listTagTable.eq(i).find('.inputTagSort').attr("name", "tag-"+i+"[sort]");
+            }
+        });
+
+        jQuery(document).on("click", ".del-tag", function () {
+            jQuery(this).parents("tr").remove();
+            var listTagTable = jQuery('.table-tag-item');
+            for (var i = 0; i < listTagTable.length; i++) {
+                listTagTable.eq(i).find('.inputTagTitle').attr("name", "tag-"+i+"[title]");
+                listTagTable.eq(i).find('.inputTagUrl').attr("name", "tag-"+i+"[url]");
+                listTagTable.eq(i).find('.inputTagSort').attr("name", "tag-"+i+"[sort]");
+            }
+        })
+    })
+
+</script>
