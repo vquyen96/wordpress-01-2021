@@ -1382,6 +1382,22 @@ h2.woocommerce-loop-product__title {
 	margin-bottom: 20px;
 }
 
+a.checkout-button.button {
+	background: #ff9124 !important;
+}
+
+.woocommerce-info {
+	border-top-color: #ff9124 !important;
+}
+
+
+.woocommerce-info::before {
+	color: #ff9124 !important;
+}
+
+button#place_order {
+	background: #ff9124 !important;
+}
 
 
 

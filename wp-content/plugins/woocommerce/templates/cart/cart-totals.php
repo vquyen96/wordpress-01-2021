@@ -22,7 +22,7 @@ defined( 'ABSPATH' ) || exit;
 
 	<?php do_action( 'woocommerce_before_cart_totals' ); ?>
 
-	<h2><?php esc_html_e( 'Tổng đơn', 'woocommerce' ); ?></h2>
+	<h2><?php esc_html_e( 'Tổng đơn hàng', 'woocommerce' ); ?></h2>
 
 	<table cellspacing="0" class="shop_table shop_table_responsive">
 
@@ -49,8 +49,8 @@ defined( 'ABSPATH' ) || exit;
 		<?php elseif ( WC()->cart->needs_shipping() && 'yes' === get_option( 'woocommerce_enable_shipping_calc' ) ) : ?>
 
 			<tr class="shipping">
-				<th><?php esc_html_e( 'Shipping', 'woocommerce' ); ?></th>
-				<td data-title="<?php esc_attr_e( 'Shipping', 'woocommerce' ); ?>"><?php woocommerce_shipping_calculator(); ?></td>
+				<th><?php esc_html_e( 'Vận chuyển', 'woocommerce' ); ?></th>
+				<td data-title="<?php esc_attr_e( 'Vận chuyển', 'woocommerce' ); ?>"><?php woocommerce_shipping_calculator(); ?></td>
 			</tr>
 
 		<?php endif; ?>
@@ -95,8 +95,8 @@ defined( 'ABSPATH' ) || exit;
 		<?php do_action( 'woocommerce_cart_totals_before_order_total' ); ?>
 
 		<tr class="order-total">
-			<th><?php esc_html_e( 'Tổng cộng', 'woocommerce' ); ?></th>
-			<td data-title="<?php esc_attr_e( 'Tổng cộng', 'woocommerce' ); ?>"><?php wc_cart_totals_order_total_html(); ?></td>
+			<th><?php esc_html_e( 'Tổng đơn', 'woocommerce' ); ?></th>
+			<td data-title="<?php esc_attr_e( 'Tổng đơn', 'woocommerce' ); ?>"><?php wc_cart_totals_order_total_html(); ?></td>
 		</tr>
 
 		<?php do_action( 'woocommerce_cart_totals_after_order_total' ); ?>
