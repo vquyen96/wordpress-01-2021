@@ -149,7 +149,7 @@ $valueTags = json_decode($valueTagString, true);
                 "                <th width=\"20%\" scope=\"row\" valign=\"top\">\n" +
                 "                    <input type=\"text\" name=\"tag-"+nextIndex+"[title]\" value=\"\" style=\"width: 100%\" class='inputTagTitle'/>\n" +
                 "                </th>\n" +
-                "                <td width=\"60%\">\n" +
+                "                <td width=\"50%\">\n" +
                 "                    <input type=\"text\" width=\"100%\" name=\"tag-"+nextIndex+"[url]\" value=\"\" style=\"width: 100%\"  class='inputTagUrl'/>\n" +
                 "                </td>\n" +
                 "                <td width=\"20%\">\n" +
