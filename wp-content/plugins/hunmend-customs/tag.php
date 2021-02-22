@@ -132,9 +132,9 @@ $valueTags = json_decode($valueTagString, true);
         </table>
 
         <p style="text-align: center;">
-            <input type="button" name="do" value="<?php _e('Add New', 'hunmend-customs') ?>"  class="button button-success" id="add_new_tag"/>
+            <input type="button" name="do" value="<?php _e('Thêm mới', 'hunmend-customs') ?>"  class="button button-success" id="add_new_tag"/>
             &nbsp;&nbsp;
-            <input type="submit" name="do" value="<?php _e('Update', 'hunmend-customs') ?>"  class="button-primary" />
+            <input type="submit" name="do" value="<?php _e('Cập nhật', 'hunmend-customs') ?>"  class="button-primary" />
         </p>
     </div>
 </form>
