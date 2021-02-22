@@ -18,6 +18,14 @@ if (count($hunmendCustoms) != 0) {
 }
 
 
+// Get Tag
+$hunmendTags =  $wpdb->get_results(  $wpdb->prepare("SELECT * FROM $wpdb->hunmend_customs WHERE name = %s LIMIT 1", "TAG"));
+if ($hunmendTags != null && count($hunmendTags) != 0) {
+    $valueTagString = $hunmendTags[0]->value;
+    $valueTags = json_decode($valueTagString, true);
+}
+
+
 $list_exclude = [];
 
 $args = [
@@ -319,13 +327,17 @@ if ($pageName == 'question') {
                     </div>
                     <?php } ?>
                 </div>
-                <div class="home-top-small">
-                    <?php for ($i = 3; $i < 6; $i++) {?>
-                    <div class="home-top-small-item">
-                        <a href="<?php echo get_permalink($list_post_top[$i]->ID);?>" class="home-top-small-img" style="background: url('<?php echo get_the_post_thumbnail_url($list_post_top[$i]->ID,'thumbnail') ?>') no-repeat center /cover"></a>
-                        <a href="<?php echo get_permalink($list_post_top[$i]->ID);?>" class="home-top-small-title"><?php echo $list_post_top[$i]->post_title?></a>
+                <div class="home-top-small home-top-tag ">
+                    <div class="tag-image">
+                        <img src="https://omnghen.vn/html/destop/images/ic-mbth.jpg" alt="">
                     </div>
-                    <?php } ?>
+                    <div class="tag-main">
+                        <? foreach ($valueTags as $tag) { ?>
+                            <a href="<?php echo $tag['url'] ?>" class="tag-item">
+                                <?php echo $tag['title'] ?>
+                            </a>
+                        <?php } ?>
+                    </div>
                 </div>
             </div>
             <?php for ($i = 0; $i < 6; $i++) {?>
