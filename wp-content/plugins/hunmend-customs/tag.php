@@ -135,8 +135,6 @@ $valueTags = json_decode($valueTagString, true);
             <input type="button" name="do" value="<?php _e('Add New', 'hunmend-customs') ?>"  class="button button-success" id="add_new_tag"/>
             &nbsp;&nbsp;
             <input type="submit" name="do" value="<?php _e('Update', 'hunmend-customs') ?>"  class="button-primary" />
-            &nbsp;&nbsp;
-            <input type="button" name="cancel" value="<?php _e('Cancel', 'hunmend-customs'); ?>" class="button" onclick="javascript:history.go(-1)" />
         </p>
     </div>
 </form>
