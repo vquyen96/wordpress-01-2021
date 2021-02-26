@@ -478,6 +478,7 @@ button.owl-next:hover {
 	font-weight: bold;
 	padding: 5px 10px;
 	white-space: nowrap;
+	margin-right: 20px
 }
 
 .focal-content {
@@ -485,13 +486,14 @@ button.owl-next:hover {
 	font-family: 'Open Sans', Arial, Helvetica, sans-serif;
 	font-size: 14px;
 	font-weight: 400;
-	width: auto;
+	width: 100%;
 	position: relative;
 	overflow: hidden;
 	padding-right: 38px;
+	padding-left: 38px;
 }
 
-.focal-content>span {
+.focal-content>span.btnNextSubMenu {
 	position: absolute;
 	font-size: 24px;
 	z-index: 1;
@@ -503,14 +505,43 @@ button.owl-next:hover {
 	width: 38px;
 	font-weight: bold;
 	text-align: center;
-	border-left: 1px solid #ccc;
+	border-left: 1px solid #ff9124;
 	cursor: pointer;
 	background: #fff;
+}
+
+.focal-content>span.btnNextSubMenu:hover {
+	background: #ff9124;
+	color: #fff;
+}
+
+.focal-content>span.btnPrevSubMenu {
+	display: none;
+	position: absolute;
+	font-size: 24px;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	height: 42px;
+	color: #ff9124;
+	width: 38px;
+	font-weight: bold;
+	text-align: center;
+	border-left: 1px solid #ff9124;
+	border-right: 1px solid #ff9124;
+	cursor: pointer;
+	background: #fff;
+}
+
+.focal-content>span.btnPrevSubMenu:hover {
+	background: #ff9124;
+	color: #fff;
 }
 
 .focal-content ul {
 	display: flex;
 	margin: 0;
+	transition: 2s;
 }
 
 .focal-content ul li {
@@ -1607,6 +1638,23 @@ input#submit {
 	.focal-bg {
 		background: #ff9124;
 		height: 50px;
+	}
+
+	.focal-content {
+		padding-left: 0;
+	}
+
+	.focal-content>span.btnNextSubMenu {
+		height: 50px;
+		width: 28px;
+		right: 50px;
+		line-height: 50px;
+	}
+
+	.focal-content>span.btnPrevSubMenu {
+		height: 50px;
+		width: 28px;
+		line-height: 50px;
 	}
 
 	.focal {
