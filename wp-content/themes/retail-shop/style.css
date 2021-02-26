@@ -477,6 +477,7 @@ button.owl-next:hover {
 	font-size: 14px;
 	font-weight: bold;
 	padding: 5px 10px;
+	white-space: nowrap;
 }
 
 .focal-content {
@@ -484,6 +485,27 @@ button.owl-next:hover {
 	font-family: 'Open Sans', Arial, Helvetica, sans-serif;
 	font-size: 14px;
 	font-weight: 400;
+	width: auto;
+	position: relative;
+	overflow: hidden;
+	padding-right: 38px;
+}
+
+.focal-content>span {
+	position: absolute;
+	font-size: 24px;
+	z-index: 1;
+	right: 0;
+	top: 0;
+	height: 42px;
+	display: block;
+	color: #ff9124;
+	width: 38px;
+	font-weight: bold;
+	text-align: center;
+	border-left: 1px solid #ccc;
+	cursor: pointer;
+	background: #fff;
 }
 
 .focal-content ul {
@@ -499,7 +521,10 @@ button.owl-next:hover {
 	display: block;
 	height: 42px;
 	line-height: 42px;
+	white-space: nowrap;
 }
+
+
 
 .home-content {
 	background: #fff;
