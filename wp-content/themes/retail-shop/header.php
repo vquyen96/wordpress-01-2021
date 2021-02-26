@@ -60,6 +60,14 @@ foreach ($hunmendData['FEATURE'] as $cateId) {
     }
 }
 
+// Get Smenu
+$hunmendSmenus =  $wpdb->get_results(  $wpdb->prepare("SELECT * FROM $wpdb->hunmend_customs WHERE name = %s LIMIT 1", "SUB_MENU"));
+if ($hunmendSmenus != null && count($hunmendSmenus) != 0) {
+    $valueSmenuString = $hunmendSmenus[0]->value;
+    $valueSmenus = json_decode($valueSmenuString, true);
+}
+
+
 //print_r($cats);
 //$moderation = $wpdb->get_col( $wpdb->prepare( "SELECT * FROM {$wpdb->ca} WHERE comment_approved = '0' LIMIT %d OFFSET %d", $limit, $start ) );
 
@@ -186,12 +194,13 @@ $bannerMainMobie =  $wpdb->get_results( "SELECT * FROM $wpdb->hunmend_banners WH
                             <li class="responsive-768">
                                 <a href="<?php echo esc_url( home_url( '/' )."?cat=".$catChild->term_id ) ?>">Trang chủ</a>
                             </li>
-                            <?php foreach ($listCateFeature as $cateFeature) { ?>
+                            <? foreach ($valueSmenus as $smenu) { ?>
                             <li>
-                                <a href="<?php echo esc_url( home_url( '/' )."?cat=".$cateFeature->term_id )?>>"><?php echo $cateFeature->name ?></a>
+                                <a href="<?php echo $smenu['url'] ?>"><?php echo $smenu['title'] ?></a>
                             </li>
                             <?php } ?>
                         </ul>
+                        <span aria-label="Next" class="btnNextSubMenu">›</span>
                     </div>
                     <div class="btn-menu-mobie">
                         <span></span>
@@ -234,3 +243,18 @@ $bannerMainMobie =  $wpdb->get_results( "SELECT * FROM $wpdb->hunmend_banners WH
         </div>
     </div>
 
+    <script>
+        jQuery(document).ready(function () {
+            var countSubMenu = <?php echo count($valueSmenus); ?>;
+            jQuery(document).on('click', '.btnNextSubMenu', function() {
+                var smenuBgWidth = jQuery('.focal-content').width();
+                var smenuItem = jQuery('.focal-content>ul>li').width();
+                var smenuWidth = smenuItem * countSubMenu;
+                var smenuMoveWidth = smenuWidth - smenuBgWidth;
+                if (smenuMoveWidth > 0) {
+                    jQuery('.focal-content>ul').css('margin-left', '-200px');
+                }
+
+            });
+        });
+    </script>
