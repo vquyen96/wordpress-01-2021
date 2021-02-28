@@ -200,7 +200,8 @@ $bannerMainMobie =  $wpdb->get_results( "SELECT * FROM $wpdb->hunmend_banners WH
                             </li>
                             <?php } ?>
                         </ul>
-                        <span aria-label="Next" class="btnNextSubMenu">›</span>
+                        <span aria-label="Next" class="btnNextSubMenu">></span>
+                        <span aria-label="Prevout" class="btnPrevSubMenu"><</span>
                     </div>
                     <div class="btn-menu-mobie">
                         <span></span>
@@ -246,13 +247,37 @@ $bannerMainMobie =  $wpdb->get_results( "SELECT * FROM $wpdb->hunmend_banners WH
     <script>
         jQuery(document).ready(function () {
             var countSubMenu = <?php echo count($valueSmenus); ?>;
+            var smenuMl = 0;
+            var smenuPadding = 40;
+            var smenuPlus = 200;
+            if (jQuery(window).width() < 768) {
+                var smenuItem = 64;
+                smenuPadding = 150;
+                smenuPlus = 100;
+            } else {
+                var smenuItem = 52+43;
+            }
             jQuery(document).on('click', '.btnNextSubMenu', function() {
                 var smenuBgWidth = jQuery('.focal-content').width();
-                var smenuItem = jQuery('.focal-content>ul>li').width();
+
                 var smenuWidth = smenuItem * countSubMenu;
-                var smenuMoveWidth = smenuWidth - smenuBgWidth;
+                var smenuMoveWidth = smenuWidth - smenuBgWidth - smenuMl +  smenuPadding;
+                console.log(smenuMoveWidth);
                 if (smenuMoveWidth > 0) {
-                    jQuery('.focal-content>ul').css('margin-left', '-200px');
+                    smenuMl += smenuPlus;
+                    jQuery('.focal-content>ul').css('margin-left', '-' + smenuMl + 'px');
+                    jQuery('.focal-content>span.btnPrevSubMenu').css('display', 'block');
+                }
+            });
+
+            jQuery(document).on('click', '.btnPrevSubMenu', function() {
+                if (smenuMl > 0) {
+                    smenuMl -= smenuPlus;
+                    jQuery('.focal-content>ul').css('margin-left', '-' + smenuMl + 'px');
+                }
+
+                if (smenuMl <= 0) {
+                    jQuery('.focal-content>span.btnPrevSubMenu').css('display', 'none');
                 }
 
             });
