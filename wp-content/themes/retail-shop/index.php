@@ -310,7 +310,7 @@ if ($pageName == 'question') {
 
             <?php } else {?>
             <div class="home-top">
-                <div class="home-top-big owl-carousel owl-theme">
+                <div class="home-top-big owl-carousel owl-theme news-top-slide">
                     <?php for ($i = 0; $i < 3; $i++) {?>
                     <div class="home-top-big-item">
                         <a href="<?php echo get_permalink($list_post_top[$i]->ID);?>" class="home-top-big-img"

@@ -143,11 +143,26 @@ wp_footer(); ?>
     $(document).on('click', '.btn-menu-mobie , .btn-menu-mobie-hide', function () {
         $('nav.nav-menu').toggle();
     });
-    $('.owl-carousel').owlCarousel({
+    $('.owl-carousel.header-slide').owlCarousel({
         loop:true,
         margin:10,
         nav:true,
         dots:false,
+        autoplay:true,
+        autoplayTimeout:4069,
+        autoplayHoverPause:true,
+        responsive:{
+            0:{
+                items:1
+            }
+        }
+    })
+    $('.owl-carousel.news-top-slide').owlCarousel({
+        loop:true,
+        margin:10,
+        nav:true,
+        dots:false,
+        autoplay:false,
         responsive:{
             0:{
                 items:1
