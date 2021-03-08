@@ -222,7 +222,7 @@ $bannerMainMobie =  $wpdb->get_results( "SELECT * FROM $wpdb->hunmend_banners WH
         </div>
     </div>
     <div class="banner-header-bg">
-        <div class="banner-header owl-carousel owl-theme">
+        <div class="banner-header owl-carousel owl-theme header-slide">
             <?php foreach ($bannerMain as $banner) { ?>
                 <div class="item">
                     <a href="<?php echo $banner->links?>" target="_blank">
