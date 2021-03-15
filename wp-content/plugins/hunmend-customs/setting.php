@@ -11,8 +11,9 @@ $dataType = [
     'PHONE'         => 'single',
     'FB_PAGE'       => 'single',
     'CONTACT_CONTENT' => 'single',
+    'FEATURE_TITLE' => 'single',
     'NAV_HEADER'    => 'list',
-    'FEATURE'       => 'list',
+//    'FEATURE'       => 'list',
     'POST_TOP'      => 'list',
     'CATE_HOME'     => 'list',
 ];
@@ -21,29 +22,31 @@ if ( ! empty($_POST) ) {
         if ($dataType == 'single') {
             if (isset($_POST[$dataName])) {
                 $setting = $wpdb->get_row(  $wpdb->prepare("SELECT * FROM $wpdb->hunmend_customs WHERE name = %s", $dataName));
-                $updated_at = current_time( 'timestamp' );
-                $dataUpdate = [
-                    'name'              => $dataName,
-                    'value'             => $_POST[$dataName],
-                    'updated_at'        => $updated_at,
-                ];
-                $dataUpdateType = [
-                    '%s',
-                    '%s',
-                    '%d'
-                ];
-
-                $update_setting = $wpdb->update(
-                    $wpdb->hunmend_customs,
-                    $dataUpdate,
-                    array(
-                        'id' => $setting->id
-                    ),
-                    $dataUpdateType,
-                    array(
+                if ($setting != null) {
+                    $updated_at = current_time( 'timestamp' );
+                    $dataUpdate = [
+                        'name'              => $dataName,
+                        'value'             => $_POST[$dataName],
+                        'updated_at'        => $updated_at,
+                    ];
+                    $dataUpdateType = [
+                        '%s',
+                        '%s',
                         '%d'
-                    )
-                );
+                    ];
+
+                    $update_setting = $wpdb->update(
+                        $wpdb->hunmend_customs,
+                        $dataUpdate,
+                        array(
+                            'id' => $setting->id
+                        ),
+                        $dataUpdateType,
+                        array(
+                            '%d'
+                        )
+                    );
+                }
             }
         }
 
@@ -165,21 +168,14 @@ $list_post_top = get_posts($args);
 
         </table>
 
-        <h3><?php _e('Sắp xếp tiêu đề', 'hunmend-customs'); ?></h3>
+        <h3><?php _e('Tiêu điểm', 'hunmend-customs'); ?></h3>
         <table class="form-table">
-            <?php for ($i = 0; $i < count($hunmendData['FEATURE']); $i++) { ?>
-                <tr>
-                    <th width="20%" scope="row" valign="top"><?php _e('Tiêu đề thứ '.($i+1), 'hunmend-customs') ?></th>
-                    <td width="80%">
-                        <select name="FEATURE[]" id="">
-                            <?php foreach ($catFeatures as $cat) { ?>
-                                <option value="<?php echo $cat->term_id ?>" <?php echo $cat->term_id == $hunmendData['FEATURE'][$i] ? 'selected' : '' ?>><?php echo $cat->name ?></option>
-                            <?php } ?>
-                        </select>
-                    </td>
-                </tr>
-            <?php } ?>
-
+            <tr>
+                <th width="20%" scope="row" valign="top"><?php _e('Tiêu đề', 'hunmend-customs') ?></th>
+                <td width="80%">
+                    <input type="text" size="70" name="FEATURE_TITLE" value="<?php echo $hunmendData['FEATURE_TITLE']?>" />
+                </td>
+            </tr>
         </table>
 
 

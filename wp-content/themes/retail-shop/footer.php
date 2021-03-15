@@ -156,7 +156,8 @@ wp_footer(); ?>
                 items:1
             }
         }
-    })
+    });
+
     $('.owl-carousel.news-top-slide').owlCarousel({
         loop:true,
         margin:10,
