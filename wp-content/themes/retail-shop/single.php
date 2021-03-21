@@ -7,7 +7,6 @@
  * @package ecommerce-star
  * @since 1.0
  */
-
 get_header(); 
 global $ecommerce_star_option;
 $class = 'col-md-8 col-sm-8';
@@ -15,7 +14,6 @@ if($ecommerce_star_option['layout_section_post_one_column']==true){
    $class = 'col-md-12 col-sm-12';
 }
 
-$_post = get_post( $post );
 $categories = get_the_terms( $post->id, 'category' );
 ?>
 
