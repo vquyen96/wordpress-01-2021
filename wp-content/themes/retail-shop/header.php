@@ -9,7 +9,7 @@ global $wpdb;
 
 $hunmendCustoms =  $wpdb->get_results(  $wpdb->prepare("SELECT * FROM $wpdb->hunmend_customs WHERE status = %d ORDER BY sort ASC", 1));
 $hunmendData = [];
-$listIsArray = ['NAV_HEADER', 'POST_TOP', 'FEATURE', 'CATE_HOME'];
+$listIsArray = ['NAV_HEADER', 'POST_TOP', 'CATE_HOME'];
 if (count($hunmendCustoms) != 0) {
     foreach ($hunmendCustoms as $hunmend) {
         if (in_array($hunmend->name, $listIsArray)) {
@@ -51,14 +51,14 @@ foreach ($hunmendData['NAV_HEADER'] as $cateId) {
     }
 }
 
-$listCateFeature = [];
-foreach ($hunmendData['FEATURE'] as $cateId) {
-    foreach ($cats as $cate) {
-        if ($cate->cat_ID == $cateId) {
-            $listCateFeature[] = $cate;
-        }
-    }
-}
+//$listCateFeature = [];
+//foreach ($hunmendData['FEATURE'] as $cateId) {
+//    foreach ($cats as $cate) {
+//        if ($cate->cat_ID == $cateId) {
+//            $listCateFeature[] = $cate;
+//        }
+//    }
+//}
 
 // Get Smenu
 $hunmendSmenus =  $wpdb->get_results(  $wpdb->prepare("SELECT * FROM $wpdb->hunmend_customs WHERE name = %s LIMIT 1", "SUB_MENU"));
@@ -187,7 +187,7 @@ $bannerMainMobie =  $wpdb->get_results( "SELECT * FROM $wpdb->hunmend_banners WH
             <div class="col-12">
                 <div class="focal">
                     <div class="focal-title">
-                        Tin tiêu điểm
+                        <?php echo $hunmendData['FEATURE_TITLE'] ?>
                     </div>
                     <div class="focal-content">
                         <ul>

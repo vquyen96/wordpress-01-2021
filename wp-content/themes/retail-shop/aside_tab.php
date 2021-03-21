@@ -46,7 +46,7 @@ $postNews = get_posts([
             <ul>
                 <?php foreach($hunmendQuestions as $question) { ?>
                 <li>
-                    <a href="#" class="content-right-qa-item">
+                    <a href="<?php echo esc_url( home_url( '/' )) ?>?page=question&id=<?php echo $question->id?>" class="content-right-qa-item">
                         <?php echo $question->question_title?>
                     </a>
                 </li>

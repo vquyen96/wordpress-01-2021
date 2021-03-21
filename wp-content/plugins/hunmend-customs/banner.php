@@ -55,6 +55,14 @@ if (isset($_FILES['file_banner']) && $_FILES['file_banner']['size'] != 0) {
     }
 
 }
+if (isset($_POST['method']) && $_POST['method'] == 'delete') {
+    $bannerResult = $wpdb->delete(
+        $wpdb->hunmend_banners,
+        ['id' => $bannerId],
+        ['%d']
+    );
+    return wp_redirect( 'admin.php?page=hunmend-customs%2Fbanner.php' );
+}
 if (isset($_POST['do']) && $bannerId == 0) {
     if ($bannerUrl == null) {
         $alertError = "Hình ảnh không được để trống";
@@ -184,8 +192,12 @@ $bannerCurrent = $wpdb->get_row(  $wpdb->prepare("SELECT * FROM $wpdb->hunmend_b
                     <img src="<?php echo $banner->value?>" alt="<?php echo $banner->title?>" class="banner-img">
                 </td>
                 <td><?php echo $bannerTypes[$banner->type] ?></td>
-                <td>
-                    <a href="admin.php?page=hunmend-customs%2Fbanner.php&amp;id=<?php echo $banner->id?>" class="edit"><?php _e('Edit', 'hunmend-customs') ?></a>
+                <td style="display: flex; align-items: center">
+                    <a href="admin.php?page=hunmend-customs%2Fbanner.php&amp;id=<?php echo $banner->id?>" class="edit" style="margin-right: 10px"><?php _e('Sửa', 'hunmend-customs') ?></a>
+                    <form action="admin.php?page=hunmend-customs%2Fbanner.php&amp;id=<?php echo $banner->id?>" method="post">
+                        <input type="submit" value="<?php _e('Xóa', 'hunmend-customs') ?>" onclick="return confirm('Bạn có chắc muốn xóa banner <?php echo $banner->title?>')">
+                        <input type="hidden" name="method" value="delete">
+                    </form>
                 </td>
             </tr>
             <?php } ?>
