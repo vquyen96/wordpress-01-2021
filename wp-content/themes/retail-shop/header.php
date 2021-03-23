@@ -102,22 +102,12 @@ $bannerMainMobie =  $wpdb->get_results( "SELECT * FROM $wpdb->hunmend_banners WH
 ?>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"></head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 
-<meta property="og:url"           content="<?php echo (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";?>"/>
-<meta property="og:type"          content="website" />
-<meta property="fb:app_id"        content="736357690135528" />
-<meta property="og:title"         content="<?php echo isset($og['title']) ? ($og['title']) : 'Mang Thai Khỏe'; ?>" />
-<meta property="og:description"   content="<?php echo isset($og['description']) ? ($og['description']) : 'Nơi chia sẻ các câu chuyện, kiến thức về chăm sóc, dinh dưỡng trong thời gian mang thai, chuẩn bị mang thai và thời gian sau sinh, giúp mẹ có một thai kỳ khỏe mạnh và hạnh phúc.'; ?>" />
-<meta property="og:image"         content="<?php echo isset($og['image']) ? ($og['image']) : '/og_image.jpg'; ?>" />
-<meta property="og:image:alt"     content="<?php echo isset($og['title']) ? ($og['title']) : 'Mang Thai Khỏe'; ?>" />
-<meta property="og:image:width" content="476" />
-<meta property="og:image:height" content="248" />
-
-
+</head>
 <body <?php body_class(); ?>>
     <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v9.0&appId=196414931235563&autoLogAppEvents=1" nonce="12bKG53Q"></script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&autoLogAppEvents=1&version=v10.0&appId=888440785331836" nonce="iHk7wLw9"></script>
 
     <header class="custom-header">
         <div class="header-content" style="background: url('<?php echo $bannerHead->value ?>') no-repeat center /cover">
