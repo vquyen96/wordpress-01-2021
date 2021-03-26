@@ -47,7 +47,7 @@ if ( $product->is_in_stock() ) : ?>
 		?>
 
         <input type="hidden" name="product-id" value="<?php echo esc_attr( $product->get_id() ); ?>">
-		<button type="submit" name="add-to-cart" value="true" class="single_add_to_cart_button button alt" style="margin-bottom: 10px">Thêm vào giỏ hàng</button>
+		<button type="submit" name="add-to-cart" value="true" class="single_add_to_cart_button button alt mt-2" style="margin-bottom: 10px">Thêm vào giỏ hàng</button>
 
 		<button type="submit" name="add-to-cart" value="buy-now" class="single_add_to_cart_button button alt" id="btn-buy-now">Mua ngay</button>
 

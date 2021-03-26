@@ -75,6 +75,8 @@ $bannerHead =  $wpdb->get_row( "SELECT * FROM $wpdb->hunmend_banners WHERE type=
 $bannerHeadMobie =  $wpdb->get_row( "SELECT * FROM $wpdb->hunmend_banners WHERE type=4");
 $bannerMain =  $wpdb->get_results( "SELECT * FROM $wpdb->hunmend_banners WHERE type=2");
 $bannerMainMobie =  $wpdb->get_results( "SELECT * FROM $wpdb->hunmend_banners WHERE type=5");
+$bannerIconHead =  $wpdb->get_row( "SELECT * FROM $wpdb->hunmend_banners WHERE type=6");
+
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?> class="no-js">
@@ -82,6 +84,7 @@ $bannerMainMobie =  $wpdb->get_results( "SELECT * FROM $wpdb->hunmend_banners WH
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="profile" href="http://gmpg.org/xfn/11">
+<link type="image/x-icon" href="<?php echo $bannerIconHead->value ?>" rel="shortcut icon" />
 <?php 
 	wp_head();
 	/* 

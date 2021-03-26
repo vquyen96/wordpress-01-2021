@@ -6,7 +6,8 @@ $bannerTypes = [
     2 => 'Trung tâm',
     3 => 'Bên phải',
     4 => 'Đầu trang mobie',
-    5 => 'Trung tâm mobie'
+    5 => 'Trung tâm mobie',
+    6 => 'Icon đầu trang'
 ];
 
 
