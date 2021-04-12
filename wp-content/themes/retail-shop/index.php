@@ -120,7 +120,7 @@ $postVideos = get_posts([
     'orderby'           => 'post_date',
     'order'             => 'DESC',
     'post_type'         => 'post',
-    'include'           => $videoIds
+    'category'          => 37
 ]);
 
 // Contact

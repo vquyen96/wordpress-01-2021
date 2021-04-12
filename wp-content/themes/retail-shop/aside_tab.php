@@ -24,6 +24,22 @@ $postNews = get_posts([
     'post_type'         => 'post',
 ]);
 
+$postVideos = get_posts([
+    'numberposts'       => 4,
+    'orderby'           => 'post_date',
+    'order'             => 'DESC',
+    'post_type'         => 'post',
+    'category'          => 37
+]);
+
+$listVideos = '(';
+foreach ($postVideos as $video) {
+    $listVideos .= $video->ID.',';
+}
+$listVideos .= '0)';
+
+$hunmendVideo =  $wpdb->get_results("SELECT * FROM $wpdb->hunmend_videos WHERE status = 1 AND post_id in ".$listVideos."  ORDER BY id DESC LIMIT 6 ");
+
 ?>
 <div class="content-right">
     <?php foreach ($bannerAside as $banner) { ?>

@@ -81,37 +81,47 @@ $bannerIconHead =  $wpdb->get_row( "SELECT * FROM $wpdb->hunmend_banners WHERE t
 <!DOCTYPE html>
 <html <?php language_attributes(); ?> class="no-js">
 <head>
-<meta charset="<?php bloginfo( 'charset' ); ?>">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="profile" href="http://gmpg.org/xfn/11">
-<link type="image/x-icon" href="<?php echo $bannerIconHead->value ?>" rel="shortcut icon" />
-<?php 
-	wp_head();
-	/* 
-	 * get default settings 
-	 */ 
-	global $retail_shop_option;	
-	if ( class_exists( 'WP_Customize_Control' ) ) {
-	   $retail_shop_option = wp_parse_args(  get_option( 'ecommerce_star_option', array() ) , ecommerce_star_settings());  
-	}
+    <meta charset="<?php bloginfo( 'charset' ); ?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="profile" href="http://gmpg.org/xfn/11">
+    <link type="image/x-icon" href="<?php echo $bannerIconHead->value ?>" rel="shortcut icon" />
+    <?php
+        wp_head();
+        /*
+         * get default settings
+         */
+        global $retail_shop_option;
+        if ( class_exists( 'WP_Customize_Control' ) ) {
+           $retail_shop_option = wp_parse_args(  get_option( 'ecommerce_star_option', array() ) , ecommerce_star_settings());
+        }
 
-    $_post = get_post( $post );
-    $og = [
-        'title' => $_post->post_title,
-        'description' => cut_string(get_the_excerpt($_post->ID), 300),
-        'image' => get_the_post_thumbnail_url($_post->ID,'medium_large'),
-    ];
+        $_post = get_post( $post );
+        $og = [
+            'title' => $_post->post_title,
+            'description' => cut_string(get_the_excerpt($_post->ID), 300),
+            'image' => get_the_post_thumbnail_url($_post->ID,'medium_large'),
+        ];
 
-?>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    ?>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-TCFR748');</script>
+    <!-- End Google Tag Manager -->
 </head>
 <body <?php body_class(); ?>>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TCFR748"
+                      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&autoLogAppEvents=1&version=v10.0&appId=888440785331836" nonce="iHk7wLw9"></script>
-
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v10.0&appId=196414931235563&autoLogAppEvents=1" nonce="5gl5IZ0n"></script>
     <header class="custom-header">
         <div class="header-content" style="background: url('<?php echo $bannerHead->value ?>') no-repeat center /cover">
             <div class="header-top">

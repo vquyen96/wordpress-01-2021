@@ -27,7 +27,6 @@ $categories = get_the_terms( $post->id, 'category' );
                     <h1 class="post-content-title">
                         <?php echo $_post->post_title?>
                     </h1>
-                    <div ></div>
                     <div class="post-content-content">
                         <?php echo $_post->post_content ?>
                     </div>
@@ -35,7 +34,7 @@ $categories = get_the_terms( $post->id, 'category' );
                         <div class="fb-like" data-href="https://mangthaikhoe.vn/" data-width="" data-layout="button_count" data-action="like" data-size="small" data-share="true"></div>
 
                     </div>
-                    <div class="fb-comments" data-href="<?php echo (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";?>" data-width="" data-numposts=""></div>
+                    <div class="fb-comments" data-href="<?php echo (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";?>" data-width="100%" data-numposts=""></div>
                 </div>
                 <div class="post-content-relate">
                     <div class="post-content-relate-title">
