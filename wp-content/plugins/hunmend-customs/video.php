@@ -54,35 +54,43 @@ if (isset($_POST['do']) && $bannerId == 0) {
     );
 }
 
-$query = "SELECT * FROM $wpdb->hunmend_questions ORDER BY id DESC";
-$listQues =  $wpdb->get_results( $query);
+$postVideos = get_posts([
+    'orderby'           => 'post_date',
+    'order'             => 'DESC',
+    'post_type'         => 'post',
+    'category'          => 37
+]);
+
+$query = "SELECT * FROM $wpdb->hunmend_videos ORDER BY id DESC";
+$listVid =  $wpdb->get_results( $query);
+
+
 ?>
 
 <div class="wrap">
     <div class="question-title d-flex">
-        <h1><?php _e('Quản lý câu hỏi', 'hunmend-customs') ; ?></h1>
+        <h1><?php _e('Quản lý video', 'hunmend-customs') ; ?></h1>
     </div>
     <div class="question-manages">
-        <h3><?php _e('Danh sách câu hỏi', 'hunmend-customs'); ?></h3>
+        <h3><?php _e('Danh sách video', 'hunmend-customs'); ?></h3>
         <table class="widefat">
             <thead>
             <tr>
                 <th><?php _e('ID', 'hunmend-customs'); ?></th>
-                <th><?php _e('Người hỏi', 'hunmend-customs'); ?></th>
-                <th><?php _e('Số điện thoại', 'hunmend-customs'); ?></th>
-                <th><?php _e('Câu hỏi', 'hunmend-customs'); ?></th>
-                <th colspan="3"><?php _e('Action', 'hunmend-customs'); ?></th>
+                <th><?php _e('Bài viết', 'hunmend-customs'); ?></th>
+                <th><?php _e('Video', 'hunmend-customs'); ?></th>
+                <th colspan="3"><?php _e('Tùy chọn', 'hunmend-customs'); ?></th>
             </tr>
             </thead>
             <tbody id="manage_polls">
-            <?php foreach($listQues as $index => $ques) { ?>
+            <?php foreach($postVideos as $index => $postVid) { ?>
             <tr>
                 <td><?php echo $index+1?></td>
-                <td><?php echo $ques->name?></td>
-                <td><?php echo $ques->phone?></td>
-                <td><?php echo $ques->question_title?></td>
+                <td><?php echo $postVid->post_title?></td>
+                <td><?php echo $postVid->post_title?></td>
                 <td>
-                    <a href="admin.php?page=hunmend-customs%2Fquestion-detail.php&amp;id=<?php echo $ques->id?>" class="edit"><?php _e('Chi tiết', 'hunmend-customs') ?></a>
+                    <button class="edit-vid"><?php _e('Sửa vid', 'hunmend-customs') ?></button>
+                    <button class="detail-post"><?php _e('Chi tiết', 'hunmend-customs') ?></button>
                 </td>
             </tr>
             <?php } ?>
@@ -90,4 +98,3 @@ $listQues =  $wpdb->get_results( $query);
         </table>
     </div>
 </div>
-

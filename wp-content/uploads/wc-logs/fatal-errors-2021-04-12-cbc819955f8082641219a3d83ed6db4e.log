@@ -1,0 +1,6 @@
+2021-04-12T20:56:19+00:00 CRITICAL Uncaught Error: Call to undefined function debug() in /var/www/html/wp-content/plugins/hunmend-customs/video.php:67
+Stack trace:
+#0 /var/www/html/wp-admin/admin.php(293): include()
+#1 {main}
+  thrown in /var/www/html/wp-content/plugins/hunmend-customs/video.php on line 67
+

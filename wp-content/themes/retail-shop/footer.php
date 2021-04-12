@@ -118,7 +118,7 @@ wp_footer(); ?>
     window.fbAsyncInit = function() {
         FB.init({
             xfbml            : true,
-            version          : 'v9.0'
+            version          : 'v10.0'
         });
     };
 
@@ -128,13 +128,13 @@ wp_footer(); ?>
         js = d.createElement(s); js.id = id;
         js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
         fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
+    }(document, 'script', 'facebook-jssdk'));
+</script>
 
-<!-- Your Chat Plugin code -->
+<!-- Your Plugin chat code -->
 <div class="fb-customerchat"
-     attribution=setup_tool
-     page_id="111184877432358"
-     theme_color="#003d70">
+     attribution="setup_tool"
+     page_id="105854821445873">
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
