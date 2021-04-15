@@ -85,6 +85,13 @@ $bannerIconHead =  $wpdb->get_row( "SELECT * FROM $wpdb->hunmend_banners WHERE t
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="profile" href="http://gmpg.org/xfn/11">
     <link type="image/x-icon" href="<?php echo $bannerIconHead->value ?>" rel="shortcut icon" />
+    <style>
+        :root {
+            --color-custom-1: <?php echo $hunmendData['COLOR_1']; ?>;
+            --color-custom-2: <?php echo $hunmendData['COLOR_2']; ?>;
+            --color-custom-3: <?php echo $hunmendData['COLOR_3']; ?>;
+        }
+    </style>
     <?php
         wp_head();
         /*

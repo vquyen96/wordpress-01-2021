@@ -8,6 +8,9 @@ global $wpdb;
 
 
 $dataType = [
+    'COLOR_1'         => 'single',
+    'COLOR_2'         => 'single',
+    'COLOR_3'         => 'single',
     'PHONE'         => 'single',
     'FB_PAGE'       => 'single',
     'CONTACT_CONTENT' => 'single',
@@ -131,6 +134,24 @@ $list_post_top = get_posts($args);
         <!-- Poll Question -->
         <h3><?php _e('Cài đặt chung', 'hunmend-customs'); ?></h3>
         <table class="form-table">
+            <tr>
+                <th width="20%" scope="row" valign="top"><?php _e('Màu sắc 1', 'hunmend-customs') ?></th>
+                <td width="80%">
+                    <input type="color" size="70" name="COLOR_1" value="<?php echo $hunmendData['COLOR_1']?>" />
+                </td>
+            </tr>
+            <tr>
+                <th width="20%" scope="row" valign="top"><?php _e('Màu sắc 2', 'hunmend-customs') ?></th>
+                <td width="80%">
+                    <input type="color" size="70" name="COLOR_2" value="<?php echo $hunmendData['COLOR_2']?>" />
+                </td>
+            </tr>
+            <tr>
+                <th width="20%" scope="row" valign="top"><?php _e('Màu sắc 3', 'hunmend-customs') ?></th>
+                <td width="80%">
+                    <input type="color" size="70" name="COLOR_3" value="<?php echo $hunmendData['COLOR_3']?>" />
+                </td>
+            </tr>
             <tr>
                 <th width="20%" scope="row" valign="top"><?php _e('Số điện thoại', 'hunmend-customs') ?></th>
                 <td width="80%">

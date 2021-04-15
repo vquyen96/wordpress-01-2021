@@ -7,7 +7,8 @@ if ($videoId != 0) {
 }
 
 if (isset($_POST['do']) && $videoId != 0) {
-    $hunmendVideo =  $wpdb->get_row("SELECT * FROM $wpdb->hunmend_videos WHERE status = 1 AND post_id = ".$_POST['post_id']);
+    $hunmendVideo =  $wpdb->get_row($wpdb->prepare("SELECT * FROM $wpdb->hunmend_videos WHERE status = 1 AND post_id = %s",$_POST['post_id']));
+
     if ($hunmendVideo == null) {
         $videoResult = $wpdb->insert(
             $wpdb->hunmend_videos,
@@ -39,7 +40,7 @@ if (isset($_POST['do']) && $videoId != 0) {
                 'view_count' => 0,
                 'status' => 1
             ],
-            ['id' => $videoId],
+            ['id' => $hunmendVideo->id],
             [
                 '%s',
                 '%s',
@@ -87,14 +88,14 @@ foreach ($hunmendVideos as $hmVideo) {
             <h3><?php _e('Chỉnh sửa video', 'hunmend-customs'); ?></h3>
             <table class="form-table">
                 <tr>
-                    <th width="20%" scope="row" valign="top"><?php _e('Tên', 'hunmend-customs') ?></th>
+                    <th width="20%" scope="row" valign="top"><?php _e('Tên bài viết', 'hunmend-customs') ?></th>
                     <td width="80%">
                         <input type="text" size="70" name="title" value="<?php echo $postVideo->post_title?>" disabled/>
                         <input type="hidden" size="70" name="post_id" value="<?php echo $postVideo->ID?>"/>
                     </td>
                 </tr>
                 <tr>
-                    <th width="20%" scope="row" valign="top"><?php _e('Link', 'hunmend-customs') ?></th>
+                    <th width="20%" scope="row" valign="top"><?php _e('Youtube ID', 'hunmend-customs') ?></th>
                     <td width="80%">
                         <input type="text" size="70" name="links" value="<?php echo isset($listVideoIds[$postVideo->ID]) ? $listVideoIds[$postVideo->ID] : ''; ?>" />
                     </td>
@@ -116,7 +117,7 @@ foreach ($hunmendVideos as $hmVideo) {
             <tr>
                 <th><?php _e('ID', 'hunmend-customs'); ?></th>
                 <th><?php _e('Bài viết', 'hunmend-customs'); ?></th>
-                <th><?php _e('Video', 'hunmend-customs'); ?></th>
+                <th><?php _e('Youtube ID', 'hunmend-customs'); ?></th>
                 <th colspan="3"><?php _e('Tùy chọn', 'hunmend-customs'); ?></th>
             </tr>
             </thead>
@@ -125,10 +126,10 @@ foreach ($hunmendVideos as $hmVideo) {
             <tr>
                 <td><?php echo $index+1?></td>
                 <td><?php echo $hunmendVid->post_title?></td>
-                <td><?php echo $hunmendVid->post_title?></td>
+                <td><?php echo isset($listVideoIds[$hunmendVid->ID]) ? $listVideoIds[$hunmendVid->ID] : ''; ?></td>
                 <td>
-                    <a href="admin.php?page=hunmend-customs%2Fvideo.php&amp;id=<?php echo $hunmendVid->ID?>" class="edit-vid"><?php _e('Sửa vid', 'hunmend-customs') ?></a>
-                    <button class="detail-post"><?php _e('Chi tiết', 'hunmend-customs') ?></button>
+                    <a href="admin.php?page=hunmend-customs%2Fvideo.php&amp;id=<?php echo $hunmendVid->ID?>" class="edit-vid button-primary"><?php _e('Sửa vid', 'hunmend-customs') ?></a>
+                    <a href="post.php?post=<?php echo $hunmendVid->ID?>&action=edit" class="edit-vid buttons"><?php _e('Chi tiết', 'hunmend-customs') ?></a>
                 </td>
             </tr>
             <?php } ?>
