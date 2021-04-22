@@ -9,7 +9,7 @@
  */
 get_header();
 $_post = get_post( $post );
-
+$list_exclude = [$_post->ID];
 global $ecommerce_star_option;
 $class = 'col-md-8 col-sm-8';
 if($ecommerce_star_option['layout_section_post_one_column']==true){   
@@ -17,6 +17,26 @@ if($ecommerce_star_option['layout_section_post_one_column']==true){
 }
 
 $categories = get_the_terms( $post->id, 'category' );
+
+
+$post_relate = [];
+foreach ($categories as $category) {
+    if (count($post_relate) < 5) {
+        $get_post = get_posts([
+            "category"          => $category->term_id,
+            'numberposts'       => 5,
+            'orderby'           => 'post_date',
+            'order'             => 'DESC',
+            'post_type'         => 'post',
+            'exclude'           => $list_exclude
+        ]);
+        foreach ($get_post as $post_item) {
+            $list_exclude[] = $post_item->ID;
+        }
+        $post_relate = array_merge($post_relate, $get_post);
+    }
+}
+
 ?>
 
 <div class="container post-content">
@@ -42,21 +62,11 @@ $categories = get_the_terms( $post->id, 'category' );
                     </div>
                     <div class="post-content-relate-main">
                         <ul>
+                            <?php foreach ($post_relate as $post_item) {?>
                             <li>
-                                <a href="#" class="post-content-relate-item">Chuẩn bị mang thai – Những điều cần biết!</a>
+                                <a href="<?php echo get_permalink($post_item->ID);?>" class="post-content-relate-item"><?php echo $post_item->post_title?></a>
                             </li>
-                            <li>
-                                <a href="#" class="post-content-relate-item">Chuẩn bị mang thai – Những điều cần biết!</a>
-                            </li>
-                            <li>
-                                <a href="#" class="post-content-relate-item">Chuẩn bị mang thai – Những điều cần biết!</a>
-                            </li>
-                            <li>
-                                <a href="#" class="post-content-relate-item">Chuẩn bị mang thai – Những điều cần biết!</a>
-                            </li>
-                            <li>
-                                <a href="#" class="post-content-relate-item">Chuẩn bị mang thai – Những điều cần biết!</a>
-                            </li>
+                            <?php } ?>
                         </ul>
                     </div>
                 </div>

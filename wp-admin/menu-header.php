@@ -291,10 +291,11 @@ function _wp_menu_output( $menu, $submenu, $submenu_as_parent = true ) {
 <ul id="adminmenu">
 
 <?php
-    print("<pre style='background: #fff'>".print_r($submenu,true)."</pre>");
+//    print("<pre style='background: #fff'>".print_r($submenu,true)."</pre>");
+//    print("<pre style='background: #fff'>".print_r($menu,true)."</pre>");
 
 
-    #Hunmend remove menu don't use
+    #Hunmend remove submenu don't use
     unset($submenu['index.php'][10]);
     unset($submenu['edit.php'][16]);
     unset($submenu['edit.php?post_type=page']);
@@ -302,8 +303,15 @@ function _wp_menu_output( $menu, $submenu, $submenu_as_parent = true ) {
     unset($submenu['edit.php?post_type=product'][16]);
 
 
-    print("<pre style='background: #fff'>".print_r($submenu['edit.php'],true)."</pre>");
-    die();
+    unset($menu[4]);
+    unset($menu[5]);
+    unset($menu[13]);
+    unset($menu[14]);
+
+
+
+//print("<pre style='background: #fff'>".print_r($submenu['edit.php'],true)."</pre>");
+//    die();
 _wp_menu_output( $menu, $submenu );
 /**
  * Fires after the admin menu has been output.
