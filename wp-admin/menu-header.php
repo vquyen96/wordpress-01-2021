@@ -296,17 +296,17 @@ function _wp_menu_output( $menu, $submenu, $submenu_as_parent = true ) {
 
 
     #Hunmend remove submenu don't use
-    unset($submenu['index.php'][10]);
-    unset($submenu['edit.php'][16]);
-    unset($submenu['edit.php?post_type=page']);
-    unset($submenu['edit.php?post_type=product'][15]);
-    unset($submenu['edit.php?post_type=product'][16]);
-
-
-    unset($menu[4]);
-    unset($menu[5]);
-    unset($menu[13]);
-    unset($menu[14]);
+//    unset($submenu['index.php'][10]);
+//    unset($submenu['edit.php'][16]);
+//    unset($submenu['edit.php?post_type=page']);
+//    unset($submenu['edit.php?post_type=product'][15]);
+//    unset($submenu['edit.php?post_type=product'][16]);
+//
+//
+//    unset($menu[4]);
+//    unset($menu[5]);
+//    unset($menu[13]);
+//    unset($menu[14]);
 
 
 
