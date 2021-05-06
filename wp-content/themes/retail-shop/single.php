@@ -71,7 +71,7 @@ foreach ($categories as $category) {
                     </div>
                 </div>
                 <div class="post-content-line"></div>
-                <div class="post-content-share">
+                <div class="post-content-share d-none">
                     <div class="post-content-share-title">
                         Chia sẻ của mẹ bầu
                     </div>

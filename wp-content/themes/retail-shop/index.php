@@ -149,7 +149,12 @@ if ($pageName == 'question') {
 
 }
 
-
+$post_relate = get_posts([
+    'numberposts'       => 5,
+    'orderby'           => 'post_date',
+    'order'             => 'DESC',
+    'post_type'         => 'post',
+]);
 ?>
 
 <div class="container home-content">
@@ -217,54 +222,18 @@ if ($pageName == 'question') {
                     </div>
                     <div class="post-content-relate">
                         <div class="post-content-relate-title">
-                            Bài viết liên quan
+                            Bài viết mới nhất
                         </div>
                         <div class="post-content-relate-main">
                             <ul>
-                                <li>
-                                    <a href="#" class="post-content-relate-item">Chuẩn bị mang thai – Những điều cần biết!</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="post-content-relate-item">Chuẩn bị mang thai – Những điều cần biết!</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="post-content-relate-item">Chuẩn bị mang thai – Những điều cần biết!</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="post-content-relate-item">Chuẩn bị mang thai – Những điều cần biết!</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="post-content-relate-item">Chuẩn bị mang thai – Những điều cần biết!</a>
-                                </li>
+                                <?php foreach ($post_relate as $post_item) {?>
+                                    <li>
+                                        <a href="<?php echo get_permalink($post_item->ID);?>" class="post-content-relate-item"><?php echo $post_item->post_title?></a>
+                                    </li>
+                                <?php } ?>
                             </ul>
                         </div>
                     </div>
-<!--                    <div class="post-content-line"></div>-->
-<!--                        <div class="post-content-share">-->
-<!--                            <div class="post-content-share-title">-->
-<!--                                Chia sẻ của mẹ bầu-->
-<!--                            </div>-->
-<!--                            <div class="post-content-share-main">-->
-<!--                                <ul>-->
-<!--                                    <li>-->
-<!--                                        <a href="#" class="post-content-share-item">Dành cho những bà mẹ đang chuẩn bị mang thai và mang thai</a>-->
-<!--                                    </li>-->
-<!--                                    <li>-->
-<!--                                        <a href="#" class="post-content-share-item">Nhật ký viết cho bé Miu và bé Heo con của mẹ</a>-->
-<!--                                    </li>-->
-<!--                                    <li>-->
-<!--                                        <a href="#" class="post-content-share-item">Dành cho những bà mẹ đang chuẩn bị mang thai và mang thai</a>-->
-<!--                                    </li>-->
-<!--                                    <li>-->
-<!--                                        <a href="#" class="post-content-share-item">Nhật ký viết cho bé Miu và bé Heo con của mẹ</a>-->
-<!--                                    </li>-->
-<!--                                    <li>-->
-<!--                                        <a href="#" class="post-content-share-item">Dành cho những bà mẹ đang chuẩn bị mang thai và mang thai</a>-->
-<!--                                    </li>-->
-<!--                                </ul>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
                 </div>
 
             <?php } else if ($pageName == 'video') {?>
